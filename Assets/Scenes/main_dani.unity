@@ -177,6 +177,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &264086389 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012266052552, guid: 4ea126723643c3340895a92b6c2d61f4,
+    type: 2}
+  m_PrefabInternal: {fileID: 750843073}
+--- !u!114 &264086390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264086389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079de5f266bbe5f4084b22c3b37cead3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSize: 1
+--- !u!50 &264086391
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264086389}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &409806238
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,11 +345,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.98
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -340,6 +374,14 @@ Prefab:
     - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.10392941
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.100840434
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
@@ -506,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eatSize: 1
 --- !u!61 &1429744840
 BoxCollider2D:
   m_ObjectHideFlags: 0

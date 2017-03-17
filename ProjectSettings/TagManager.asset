@@ -6,6 +6,7 @@ TagManager:
   tags:
   - objectmaster
   - deadzone
+  - food
   layers:
   - Default
   - TransparentFX
