@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000010367817274}
   m_Layer: 0
   m_Name: Food
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eatSize: 1
 --- !u!212 &212000011326679262
 SpriteRenderer:
   m_ObjectHideFlags: 1

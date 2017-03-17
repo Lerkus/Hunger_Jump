@@ -5,6 +5,7 @@ public class Food : MonoBehaviour
 {
 
 	private Vector3 startPosition;
+	public float eatSize = 1;
 
 	// Use this for initialization
 	void Start () 
@@ -18,6 +19,16 @@ public class Food : MonoBehaviour
 	
 	}
 
+	void OnCollisonEnter2D(Collision2D col)
+	{
+		Debug.Log ("Destroy!!22");
+		if (col.gameObject.tag == "Player") 
+		{
+			Debug.Log ("Destroy!!");
+			this.respawn ();
+		}
+	}
+
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "deadzone") 
@@ -26,4 +37,11 @@ public class Food : MonoBehaviour
 			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		}
 	}
+
+	public void respawn()
+	{
+		Destroy (gameObject);
+	}
+
+
 }
