@@ -443,7 +443,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 711088432}
   - 212: {fileID: 711088431}
-  - 114: {fileID: 711088433}
   m_Layer: 0
   m_Name: airplane
   m_TagString: Untagged
@@ -497,19 +496,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1040204834}
   m_RootOrder: 0
---- !u!114 &711088433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 711088430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4437535c9fc5d0d45b1a738b3037a440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  test: {fileID: 0}
-  colider: {fileID: 0}
 --- !u!1 &839051057
 GameObject:
   m_ObjectHideFlags: 0
