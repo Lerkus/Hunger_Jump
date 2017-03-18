@@ -54,15 +54,19 @@ public class Player : MonoBehaviour
 		if (col.gameObject.tag == "food") 
 		{
             Food foodData = col.gameObject.GetComponent<Food>();
-            foodData.respawn ();
-			PlayerSize += 0.1f * col.gameObject.GetComponent<Food> ().eatSize;
-			this.Scale ();
-			this.ScaleCamera ();
-            
-            if(foodData.eatSize > PlayerSize)
-            {
-                timeStampStart = Time.time;
-            }
+
+			if (foodData.eatSize < PlayerSize) 
+			{
+				foodData.respawn ();
+				PlayerSize += 0.1f * col.gameObject.GetComponent<Food> ().eatSize;
+				this.Scale ();
+				this.ScaleCamera ();
+			}
+
+			if(foodData.eatSize > PlayerSize)
+			{
+				timeStampStart = Time.time;
+			}
 
 		}
 
