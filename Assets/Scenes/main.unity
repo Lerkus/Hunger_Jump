@@ -242,14 +242,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 67928794}
-  cloudFast: {fileID: 1503348880}
-  cloudSpawnCycleTime: 999999
-  cloudSlow: {fileID: 1503348880}
+  cloudFast: {fileID: 1000010201612790, guid: 4bf2ef77267fcea4c861b4206d69c21c, type: 2}
+  cloudSpawnCycleTime: 0.5
+  cloudSlow: {fileID: 1000013932057028, guid: de44c808abbaa054a91fa02c594b5fae, type: 2}
   fallingObjectsSpawnCycleTime: 0.3
   shouldSpawnObjects: 1
+  AdditionHorizontalSpawnratio: 5
   masterParent: {fileID: 1573343057}
   fallingObjectsPrefabs:
-  - {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61, type: 2}
+  - {fileID: 1000010628121746, guid: a9d4708aaaa83f440b7b7fbfc5140aac, type: 2}
+  - {fileID: 1000013289400700, guid: 7fb6f1692326075459e91748303442bb, type: 2}
   finishLinePrefab: {fileID: 1000012899800362, guid: d928abe55a032d143bb20727e2ce547d,
     type: 2}
 --- !u!114 &409806241
@@ -478,6 +480,10 @@ Prefab:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 409806240}
+    - target: {fileID: 1000011232974398, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
   m_IsPrefabParent: 0
