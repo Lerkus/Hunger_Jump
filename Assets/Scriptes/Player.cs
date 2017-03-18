@@ -9,6 +9,11 @@ public class Player : MonoBehaviour
 	public float GrowRate = 1;
 	public GameObject Camera;
 
+    private float timeStampStart;
+    public float slowSpeed = 4;
+    public float normalSpeed = 9.81f;
+    public float timeToReAccelerate = 3;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -17,17 +22,24 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+        Physics2D.gravity = new Vector2(0, Mathf.Lerp(slowSpeed,normalSpeed, Mathf.Clamp01(Time.time/(timeStampStart + timeToReAccelerate))));
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.tag == "food") 
 		{
-			col.gameObject.GetComponent<Food> ().respawn ();
+            Food foodData = col.gameObject.GetComponent<Food>();
+            foodData.respawn ();
 			PlayerSize += 0.1f * col.gameObject.GetComponent<Food> ().eatSize;
 			this.Scale ();
 			this.ScaleCamera ();
+            
+            if(foodData.eatSize > PlayerSize)
+            {
+                timeStampStart = Time.time;
+            }
+
 		}
 	}
 
