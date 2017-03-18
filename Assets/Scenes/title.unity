@@ -215,6 +215,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.0336924
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 454017575}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
+      propertyPath: PlayerRotationObj
+      value: 
+      objectReference: {fileID: 1994353889}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
   m_IsPrefabParent: 0
@@ -945,7 +955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logoetc: {fileID: 2059061266}
-  creditnamen: {fileID: 625624691}
+  credits: {fileID: 625624691}
+  mainCamera: {fileID: 454017579}
+  creditSpeed: 0.3
 --- !u!114 &1381616342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,14 +1043,14 @@ RectTransform:
   m_GameObject: {fileID: 1448125647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3210816, y: 0.3210816, z: 0.35775107}
+  m_LocalScale: {x: 0.3983694, y: 0.3983694, z: 0.4438656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 2059061267}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -19.897493, y: 145.72751}
+  m_AnchoredPosition: {x: 0, y: 131}
   m_SizeDelta: {x: 1700, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448125649
@@ -1274,6 +1286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logoetc: {fileID: 2059061266}
   controls: {fileID: 1761595775}
+  mainCamera: {fileID: 454017579}
+  controlSpeed: 0.3
 --- !u!114 &1948638531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1433,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1948638528}
   isHovered: 0
+--- !u!1 &1994353889 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013233859166, guid: ed3b33173f934e645953bfd432c2a3d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 432575101}
 --- !u!1 &2059061266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1607,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2061420333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc044571dd842b347ba144b0f13d2898, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d3cc8155837f2449cdf0fd6d457f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2061420339

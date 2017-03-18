@@ -3,15 +3,24 @@ using System.Collections;
 
 public class ButtonCredits : MonoBehaviour {
 
+
     public GameObject logoetc;
-    public GameObject creditnamen;
-    private bool isClicked;
-    private bool isCreditsPlaying;
+    public GameObject credits;
+    public Camera mainCamera;
+    private bool isClicked = false;
+    private bool isControlsPlaying = false;
+    private float width;
+    private float hidingPoint;
+    private float height;
+    public float creditSpeed = 0.3f;
 
     void Start()
     {
         isClicked = false;
-        isCreditsPlaying = false;
+        isControlsPlaying = false;
+        width = logoetc.transform.position.x;
+        hidingPoint = logoetc.transform.position.x * -1;
+        height = logoetc.transform.position.y * 3;
     }
 
     public void clicked()
@@ -21,44 +30,52 @@ public class ButtonCredits : MonoBehaviour {
 
     void Update()
     {
-
         if (isClicked)
         {
-            if (logoetc.transform.position.x >= -500)
+            if (logoetc.transform.position.x >= hidingPoint)
             {
-                //Debug.Log(logoetc.transform.position.x);
-                logoetc.transform.position = Vector2.Lerp(new Vector2(logoetc.transform.position.x - 50f, logoetc.transform.position.y),logoetc.transform.position, Time.deltaTime);
-                //logoetc.transform.position = Vector2.Lerp(logoetc.transform.position, new Vector2(logoetc.transform.position.x - 800f, logoetc.transform.position.y), Time.deltaTime);
+                logoetc.transform.position = Vector2.Lerp(logoetc.transform.position, new Vector2(3 * hidingPoint, logoetc.transform.position.y), Time.deltaTime);
             }
             else
             {
-                isCreditsPlaying = true;
+                isControlsPlaying = true;
             }
-
         }
         else
         {
-            if (logoetc.transform.position.x <= 640)
+
+            /*
+            if (logoetc.transform.position.x < width)
             {
-                //Debug.Log(logoetc.transform.position.x);
-                logoetc.transform.position = Vector2.Lerp(new Vector2(logoetc.transform.position.x + 50f, logoetc.transform.position.y), logoetc.transform.position, Time.deltaTime);
+                logoetc.transform.position = Vector2.Lerp(logoetc.transform.position, new Vector2(width * 4, logoetc.transform.position.y), 2.5f * Time.deltaTime);
             }
+            */
+            
         }
 
-        if (isCreditsPlaying)
+        if (isControlsPlaying)
         {
-            if (creditnamen.transform.position.y <= 850)
+            if (credits.transform.position.y <= height)
             {
-                //Debug.Log(creditnamen.transform.position.y);
-                creditnamen.transform.position = Vector2.Lerp(new Vector2(creditnamen.transform.position.x, creditnamen.transform.position.y + 5f), creditnamen.transform.position, Time.deltaTime);
+                credits.transform.position = Vector2.Lerp(credits.transform.position, new Vector2(credits.transform.position.x, credits.transform.position.y + height), creditSpeed * Time.deltaTime);
             }
             else
             {
-                creditnamen.transform.position = new Vector2 (creditnamen.transform.position.x, -222);
-                isCreditsPlaying = false;
+                credits.transform.position = new Vector2(credits.transform.position.x, -(height / 3));
+                logoetc.transform.position = new Vector2(width, logoetc.transform.position.y);
+                isControlsPlaying = false;
                 isClicked = false;
             }
         }
-
+        
+    }
+    public Bounds OrthographicBounds()
+    {
+        float screenAspect = (float)Screen.width / (float)Screen.height;
+        float cameraHeight = mainCamera.orthographicSize * 2;
+        Bounds bounds = new Bounds(
+            mainCamera.transform.position,
+            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+        return bounds;
     }
 }
