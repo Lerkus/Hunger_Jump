@@ -14,6 +14,7 @@ public class SpeedIndicator : MonoBehaviour
     private float timeStampLastGravityChange;
     private float lastGravity;
     private Text textToUpdate;
+    private bool finishing = false;
 
     public void Start()
     {
@@ -35,9 +36,13 @@ public class SpeedIndicator : MonoBehaviour
 
         if (actualMeterFallen <= finishHeight)
         {
-            spawner.shouldSpawnObjects = false;
-            spawner.spawnFinishLine();
-            textToUpdate.text = "";
+            if (!finishing)
+            {
+                finishing = true;
+                spawner.shouldSpawnObjects = false;
+                spawner.spawnFinishLine();
+                textToUpdate.text = "";
+            }
         }
         else
         {
