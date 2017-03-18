@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour 
 {
+	public ParticleSystem PukeSystem;
 	public GameObject PlayerRotationObj;
 	public float RotationSpeed = 0.1f;
 	public float MaxRotationAngle = 40;
@@ -118,7 +119,7 @@ public class Player : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "food") 
+		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") 
 		{
             Food foodData = col.gameObject.GetComponent<Food>();
 
@@ -130,6 +131,11 @@ public class Player : MonoBehaviour
 				this.Scale ();
 				this.ScaleCamera ();
                 eating.SetTrigger("isEating");
+
+				if (col.gameObject.tag == "trash") 
+				{
+					PukeSystem.Play ();
+				}
 			}
 
 			if(foodData.eatSize > PlayerSize)
@@ -137,6 +143,8 @@ public class Player : MonoBehaviour
 				timeStampStart = Time.time;
 			}
 		}
+
+
 
         if(col.gameObject.tag == "finish")
         {

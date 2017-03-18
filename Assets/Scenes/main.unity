@@ -354,11 +354,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
---- !u!1 &728514039 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013233859166, guid: ed3b33173f934e645953bfd432c2a3d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1874491043}
 --- !u!1 &750450342
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,9 +733,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
-      propertyPath: spawner
+      propertyPath: Camera
       value: 
-      objectReference: {fileID: 409806240}
+      objectReference: {fileID: 67928794}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
       propertyPath: deadzone
@@ -748,24 +743,9 @@ Prefab:
       objectReference: {fileID: 980861022}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
-      propertyPath: Camera
+      propertyPath: spawner
       value: 
-      objectReference: {fileID: 67928794}
-    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: GrowRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: PlayerRotationObj
-      value: 
-      objectReference: {fileID: 728514039}
-    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: RotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 409806240}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
   m_IsPrefabParent: 0

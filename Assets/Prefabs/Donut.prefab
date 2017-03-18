@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000013771996922}
   m_Layer: 0
   m_Name: Donut
-  m_TagString: food
+  m_TagString: trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeedModifier: 15
+  ownSpeed: {x: 0, y: 0}
 --- !u!212 &212000013129229544
 SpriteRenderer:
   m_ObjectHideFlags: 1
