@@ -19,22 +19,13 @@ public class Food : MonoBehaviour
 	
 	}
 
-	void OnCollisonEnter2D(Collision2D col)
-	{
-		Debug.Log ("Destroy!!22");
-		if (col.gameObject.tag == "Player") 
-		{
-			Debug.Log ("Destroy!!");
-			this.respawn ();
-		}
-	}
-
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "deadzone") 
 		{
 			transform.position = startPosition;
 			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+            respawn();
 		}
 	}
 
