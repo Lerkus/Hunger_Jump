@@ -526,6 +526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079de5f266bbe5f4084b22c3b37cead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerRotationObj: {fileID: 0}
+  RotationSpeed: 30
+  MaxRotationAngle: 40
   spawner: {fileID: 0}
   deadzone: {fileID: 0}
   PlayerSize: 1
@@ -534,6 +537,10 @@ MonoBehaviour:
   slowSpeed: 4
   normalSpeed: 9.81
   timeToReAccelerate: 3
+  NewCameraScale: 0
+  OldCameraScale: 0
+  NewPlayerScale: {x: 0, y: 0, z: 0}
+  OldPlayerScale: {x: 0, y: 0, z: 0}
 --- !u!212 &212000010195920546
 SpriteRenderer:
   m_ObjectHideFlags: 1
