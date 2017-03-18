@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 	public Vector2 RotationRange = new Vector2(320, 20);
 
 	bool lockRot = false;
+	bool crash = false;
 
 	// Use this for initialization
 	void Start () {
@@ -108,36 +109,68 @@ public class Player : MonoBehaviour
 			this.lockRot = true;
 		}
 
+		if (crash) 
+		{
+			transform.Rotate( new Vector3(0,0, 30));
+		}
+
+	}
+
+	public void StartPage() {
+		print("in StartPage()");
+		StartCoroutine(FinishFirst(5.0f));
+	}
+
+	IEnumerator FinishFirst(float waitTime) {
+		print("in FinishFirst");
+		yield return new WaitForSeconds(waitTime);
+		print("leave FinishFirst");
+		EndCrash();
+	}
+
+	void DoLast() {
+		print("do after everything is finished");
+		print("done");
+	}
+
+	void EndCrash()
+	{
+		crash = false;
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") 
-		{
-            Food foodData = col.gameObject.GetComponent<Food>();
+		StartCoroutine(FinishFirst(2.0f));
 
-			if (foodData.eatSize <= PlayerSize) 
-			{
+
+		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") {
+			Food foodData = col.gameObject.GetComponent<Food> ();
+
+			if (foodData.eatSize <= PlayerSize) {
+				if (col.gameObject.tag == "trash") {
+					PukeSystem.Play ();
+					amountFoodEaten -= foodData.eatSize * foodData.eatSize;
+				} else {
+					amountFoodEaten += foodData.eatSize * foodData.eatSize;
+				}
+
 				foodData.respawn ();
-                amountFoodEaten += foodData.eatSize * foodData.eatSize;
-                updatePlayerSize();
+				updatePlayerSize ();
 				this.Scale ();
 				this.ScaleCamera ();
-                eating.SetTrigger("isEating");
-
-				if (col.gameObject.tag == "trash") 
-				{
-					PukeSystem.Play ();
-				}
+				eating.SetTrigger ("isEating");
 			}
 
-			if(foodData.eatSize > PlayerSize)
-			{
+			if (foodData.eatSize > PlayerSize) {
 				timeStampStart = Time.time;
 			}
+		} 
+		else 
+		{
+			crash = true;
+			PukeSystem.Play ();
+			amountFoodEaten -= amountFoodEaten/100 * 5;
 		}
-
-
 
         if(col.gameObject.tag == "finish")
         {
