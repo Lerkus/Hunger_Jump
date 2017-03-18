@@ -245,12 +245,12 @@ MonoBehaviour:
   Camera: {fileID: 67928794}
   cloudFast: {fileID: 1000010201612790, guid: 4bf2ef77267fcea4c861b4206d69c21c, type: 2}
   cloudSlow: {fileID: 1000013932057028, guid: de44c808abbaa054a91fa02c594b5fae, type: 2}
-  cloudSpawnCycleTime: 0.5
+  cloudSpawnCycleTime: 0.3
   fallingObjectsSpawnCycleTime: 0.3
   spawnsPerCycle: 10
   playerData: {fileID: 728514041}
   masterParent: {fileID: 1573343057}
-  AdditionHorizontalSpawnratio: 20
+  AdditionHorizontalSpawnratio: 12
   spawnRangeLeftPoint: {x: 0, y: 0}
   spawnRangeRightPoint: {x: 0, y: 0}
   fallingObjectsPrefabs:
