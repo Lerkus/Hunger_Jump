@@ -3,21 +3,28 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour
 {
+    public bool shouldSpawnObjects = true;
     public GameObject Camera;
     public GameObject cloudFast;
-    public float cloudSpawnCycleTime = 0.5f;
     public GameObject cloudSlow;
+    public float cloudSpawnCycleTime = 0.5f;
     public float fallingObjectsSpawnCycleTime = 0.5f;
-    public bool shouldSpawnObjects = true;
 
-	public float AdditionHorizontalSpawnratio = 5f;
+    public int smallObjectsPerSpawnCycle = 5;
+    public int normalObjectsPerSpawnCycle = 2;
+    public int hugeObjectsPerSpawnCycle = 1;
+
+    public float AdditionHorizontalSpawnratio = 5f;
 
     public GameObject masterParent;
 
-    Vector2 spawnRangeLeftPoint;
-    Vector2 spawnRangeRightPoint;
+    public Vector2 spawnRangeLeftPoint;
+    public Vector2 spawnRangeRightPoint;
+    public int spawnPhase = 0;
 
-    public GameObject[] fallingObjectsPrefabs;
+    public GameObject[] smallFallingObjectsPrefabs;
+    public GameObject[] normalFallingObjectsPrefabs;
+    public GameObject[] hugeFallingObjectsPrefabs;
     public GameObject finishLinePrefab;
 
     private Coroutine cloudSpawnRoutine;
@@ -45,7 +52,29 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fallingObjectsSpawnCycleTime);
-            spawnObject(fallingObjectsPrefabs[Random.Range(0, fallingObjectsPrefabs.Length)]);
+
+            if (spawnPhase == 0)
+            {
+                for (int i = 0; i < smallObjectsPerSpawnCycle; i++)
+                {
+                    spawnObject(smallFallingObjectsPrefabs[Random.Range(0, smallFallingObjectsPrefabs.Length)]);
+                }
+            }
+            if (spawnPhase == 1)
+            {
+                for (int i = 0; i < normalObjectsPerSpawnCycle; i++)
+                {
+                    spawnObject(normalFallingObjectsPrefabs[Random.Range(0, normalFallingObjectsPrefabs.Length)]);
+                }
+            }
+
+            if (spawnPhase == 2)
+            {
+                for (int i = 0; i < hugeObjectsPerSpawnCycle; i++)
+                {
+                    spawnObject(hugeFallingObjectsPrefabs[Random.Range(0, hugeFallingObjectsPrefabs.Length)]);
+                }
+            }
         }
     }
 
@@ -71,8 +100,8 @@ public class Spawner : MonoBehaviour
 
     public void RecalculateSpawnPosition()
     {
-		spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x - AdditionHorizontalSpawnratio, OrthographicBounds().min.y-5f);
-		spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x + AdditionHorizontalSpawnratio, OrthographicBounds().min.y-5f);
+        spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x - AdditionHorizontalSpawnratio, OrthographicBounds().min.y - 5f);
+        spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x + AdditionHorizontalSpawnratio, OrthographicBounds().min.y - 5f);
     }
 
     public void spawnFinishLine()
