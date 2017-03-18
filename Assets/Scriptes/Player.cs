@@ -160,17 +160,21 @@ public class Player : MonoBehaviour
 				this.ScaleCamera ();
 				eating.SetTrigger ("isEating");
 			}
+			else 
+			{
+				crash = true;
+				PukeSystem.Play ();
+				amountFoodEaten -= (amountFoodEaten/100) * 5;
+				if (amountFoodEaten < 0) {
+					amountFoodEaten = 0;
+				}
+			}
 
 			if (foodData.eatSize > PlayerSize) {
 				timeStampStart = Time.time;
 			}
 		} 
-		else 
-		{
-			crash = true;
-			PukeSystem.Play ();
-			amountFoodEaten -= amountFoodEaten/100 * 5;
-		}
+
 
         if(col.gameObject.tag == "finish")
         {
