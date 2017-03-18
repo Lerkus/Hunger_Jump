@@ -21,7 +21,6 @@ public class ButtonCredits : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(logoetc.transform.position.x);
 
         if (isClicked)
         {
