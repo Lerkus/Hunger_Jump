@@ -10,6 +10,7 @@ TagManager:
   - SceneStartSwitch
   - LosePackage
   - default
+  - finish
   layers:
   - Default
   - TransparentFX
