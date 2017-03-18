@@ -89,7 +89,7 @@ MonoBehaviour:
   eatSize: 5
   rotationRange: 50
   minimumPlayerSize: 6
-  maximumPlayerSize: 10
+  maximumPlayerSize: 14
 --- !u!114 &114000012324324578
 MonoBehaviour:
   m_ObjectHideFlags: 1
