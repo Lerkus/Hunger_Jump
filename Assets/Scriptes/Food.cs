@@ -11,7 +11,9 @@ public class Food : MonoBehaviour
 	void Start () 
 	{
 		startPosition = transform.position;
-	}
+        Rigidbody2D phisi = gameObject.GetComponent<Rigidbody2D>();
+        phisi.rotation = Random.Range(-10f, 10f);
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -24,7 +26,8 @@ public class Food : MonoBehaviour
 		if (col.gameObject.tag == "deadzone") 
 		{
 			transform.position = startPosition;
-			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+            Rigidbody2D phisi = gameObject.GetComponent<Rigidbody2D>();
+            phisi.velocity = Vector2.zero;
             respawn();
 		}
 	}

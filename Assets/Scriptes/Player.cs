@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour 
 {
@@ -41,6 +42,11 @@ public class Player : MonoBehaviour
             }
 
 		}
+
+        if(col.gameObject.tag == "finish")
+        {
+            SceneManager.LoadScene("title");
+        }
 	}
 
 	public void Scale()
