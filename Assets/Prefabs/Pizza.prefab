@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeedModifier: 10
+  ownSpeed: {x: 0, y: 0}
 --- !u!114 &114000012920726852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 10
+  eatSize: 1.5
   rotationRange: 50
 --- !u!212 &212000011818546314
 SpriteRenderer:
