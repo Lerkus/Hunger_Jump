@@ -558,9 +558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 8
+  eatSize: 9
   rotationRange: 50
-  minimumPlayerSize: 6
+  minimumPlayerSize: 7.5
   maximumPlayerSize: 12
 --- !u!212 &212000012752050486
 SpriteRenderer:
