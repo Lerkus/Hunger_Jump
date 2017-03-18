@@ -13,7 +13,7 @@ public class ObjectMoveMaster : MonoBehaviour
             ObjectMoveClient toMove = child.GetComponent<ObjectMoveClient>();
             if (toMove != null)
             {
-                toMove.updateVelocity(horizontalInput);
+                toMove.updateVelocity(-horizontalInput);
             }
             else
             {

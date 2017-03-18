@@ -23,6 +23,7 @@ GameObject:
   - 50: {fileID: 50000012734883488}
   - 61: {fileID: 61000013814997932}
   - 114: {fileID: 114000010367817274}
+  - 114: {fileID: 114000010401365878}
   m_Layer: 0
   m_Name: Food
   m_TagString: food
@@ -86,6 +87,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eatSize: 1
+--- !u!114 &114000010401365878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010641643938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51d5ed85c0a4ef4092ca9acf1b37bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeedModifier: 10
 --- !u!212 &212000011326679262
 SpriteRenderer:
   m_ObjectHideFlags: 1
