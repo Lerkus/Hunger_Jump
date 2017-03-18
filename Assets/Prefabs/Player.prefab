@@ -86,8 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+  deadzone: {fileID: 0}
   PlayerSize: 1
-  GrowRate: 0.001
+  GrowRate: 0.01
   Camera: {fileID: 0}
 --- !u!212 &212000011068878968
 SpriteRenderer:

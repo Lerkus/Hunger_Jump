@@ -266,6 +266,10 @@ Prefab:
       propertyPath: m_Name
       value: Food (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10fd28c4bde81304d8dafdf19ae4ef61, type: 2}
   m_IsPrefabParent: 0
@@ -343,14 +347,14 @@ Prefab:
       objectReference: {fileID: 460494731}
     - target: {fileID: 114000010656394800, guid: 4ea126723643c3340895a92b6c2d61f4,
         type: 2}
-      propertyPath: Camera
-      value: 
-      objectReference: {fileID: 67928794}
-    - target: {fileID: 114000010656394800, guid: 4ea126723643c3340895a92b6c2d61f4,
-        type: 2}
       propertyPath: deadzone
       value: 
       objectReference: {fileID: 485753766}
+    - target: {fileID: 114000010656394800, guid: 4ea126723643c3340895a92b6c2d61f4,
+        type: 2}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 67928794}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
   m_IsPrefabParent: 0
@@ -458,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1347874154
 SpriteRenderer:
   m_ObjectHideFlags: 0
