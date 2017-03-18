@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 	public Vector3 NewPlayerScale;
 	public Vector3 OldPlayerScale;
 
+	bool lockRot = false;
+
 	// Use this for initialization
 	void Start () {
 		NewPlayerScale = transform.localScale;
@@ -37,23 +39,40 @@ public class Player : MonoBehaviour
 	void Update () 
 	{
 		float horizontalInput = Input.GetAxis("Horizontal");
+		//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
 
-		/*if (horizontalInput > 0) 
+
+		if (horizontalInput > 0) 
 		{
-			if (PlayerRotationObj.transform.rotation.eulerAngles.z < MaxRotationAngle) 
+			if (!lockRot) 
 			{
 				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
+			}
+
+			if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
+				this.lockRot = false;
 			}
 		} 
 		else 
 		{
-			Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
-			if (PlayerRotationObj.transform.rotation.eulerAngles.z < 260 && PlayerRotationObj.transform.rotation.eulerAngles.z < 300 ) 
+			if (!lockRot) 
 			{
-				//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
 				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
 			}
-		}*/
+
+			if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
+				this.lockRot = false;
+			}
+		}
+
+		if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
+		{
+			this.lockRot = true;
+		}
 	}
 
 	void FixedUpdate()
