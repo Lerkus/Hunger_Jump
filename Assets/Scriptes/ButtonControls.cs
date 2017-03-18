@@ -39,14 +39,12 @@ public class ButtonControls : MonoBehaviour {
         }
         else
         {
-            if (logoetc.transform.position.x >= 620)
+            if (logoetc.transform.position.x >= 680)
             {
                 //Debug.Log(logoetc.transform.position.x);
                 logoetc.transform.position = Vector2.Lerp(new Vector2(logoetc.transform.position.x - 50f, logoetc.transform.position.y), logoetc.transform.position, Time.deltaTime);
             }
         }
-
-        Debug.Log(controls.transform.position.y);
 
         if (isControlsPlaying)
         {

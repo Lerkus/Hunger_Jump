@@ -21,6 +21,7 @@ public class ButtonCredits : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log(logoetc.transform.position.x);
 
         if (isClicked)
         {
@@ -38,7 +39,7 @@ public class ButtonCredits : MonoBehaviour {
         }
         else
         {
-            if (logoetc.transform.position.x <= 620)
+            if (logoetc.transform.position.x <= 640)
             {
                 //Debug.Log(logoetc.transform.position.x);
                 logoetc.transform.position = Vector2.Lerp(new Vector2(logoetc.transform.position.x + 50f, logoetc.transform.position.y), logoetc.transform.position, Time.deltaTime);
