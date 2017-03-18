@@ -343,6 +343,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -12.9
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012994731872, guid: e76ef3e7a5df8a041a264466c23e0131,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76ef3e7a5df8a041a264466c23e0131, type: 2}
   m_IsPrefabParent: 0
@@ -437,6 +442,19 @@ Prefab:
         type: 2}
       propertyPath: m_Offset.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010656394800, guid: 4ea126723643c3340895a92b6c2d61f4,
+        type: 2}
+      propertyPath: PlayerRotationObj
+      value: 
+      objectReference: {fileID: 1437109574}
+    - target: {fileID: 4000010931117940, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
@@ -646,6 +664,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1437109574 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012266052552, guid: 4ea126723643c3340895a92b6c2d61f4,
+    type: 2}
+  m_PrefabInternal: {fileID: 750843073}
 --- !u!1001 &1738219832
 Prefab:
   m_ObjectHideFlags: 0

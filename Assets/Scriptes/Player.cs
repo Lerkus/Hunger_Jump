@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour 
 {
+	public GameObject PlayerRotationObj;
+	public float RotationSpeed = 30;
+	public float MaxRotationAngle = 40;
 	public Spawner spawner;
 	public MoveDeadzone deadzone;
 	public float PlayerSize = 1;
@@ -33,7 +36,24 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        
+		float horizontalInput = Input.GetAxis("Horizontal");
+
+		/*if (horizontalInput > 0) 
+		{
+			if (PlayerRotationObj.transform.rotation.eulerAngles.z < MaxRotationAngle) 
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
+			}
+		} 
+		else 
+		{
+			Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
+			if (PlayerRotationObj.transform.rotation.eulerAngles.z < 260 && PlayerRotationObj.transform.rotation.eulerAngles.z < 300 ) 
+			{
+				//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
+				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
+			}
+		}*/
 	}
 
 	void FixedUpdate()
@@ -47,6 +67,7 @@ public class Player : MonoBehaviour
 		//Debug.Log ("Log: " + transform.localScale.ToString());
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
 		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime/5);
+
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
