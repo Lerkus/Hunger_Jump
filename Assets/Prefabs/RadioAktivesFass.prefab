@@ -26,7 +26,7 @@ GameObject:
   - 61: {fileID: 61000010919111466}
   m_Layer: 0
   m_Name: RadioAktivesFass
-  m_TagString: food
+  m_TagString: trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 2
+  eatSize: 8
   rotationRange: 50
-  minimumPlayerSize: 0
-  maximumPlayerSize: 0
+  minimumPlayerSize: 8
+  maximumPlayerSize: 20
 --- !u!212 &212000011241076470
 SpriteRenderer:
   m_ObjectHideFlags: 1

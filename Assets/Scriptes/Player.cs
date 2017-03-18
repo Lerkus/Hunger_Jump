@@ -180,7 +180,8 @@ public class Player : MonoBehaviour
 
     private void updatePlayerSize()
     {
-        PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
+        PlayerSize = Mathf.Log(amountFoodEaten,2);
+        PlayerSize = Mathf.Clamp(PlayerSize,1,20);
         scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
         Debug.Log(PlayerSize);
     }

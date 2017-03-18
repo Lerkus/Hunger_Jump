@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079de5f266bbe5f4084b22c3b37cead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PukeSystem: {fileID: 0}
+  PukeSystem: {fileID: 198000012112839884}
   PlayerRotationObj: {fileID: 1000013233859166}
   RotationSpeed: 10
   MaxRotationAngle: 40

@@ -254,8 +254,15 @@ MonoBehaviour:
   spawnRangeLeftPoint: {x: 0, y: 0}
   spawnRangeRightPoint: {x: 0, y: 0}
   fallingObjectsPrefabs:
+  - {fileID: 1000010999723582, guid: eda98084385fb1945a2800dc08442972, type: 2}
+  - {fileID: 1000013214276484, guid: 9e8cdd35d141d034892ddd52e3a413bc, type: 2}
+  - {fileID: 1000013226954278, guid: 84bccd371af6794409b052ebb7c6636a, type: 2}
+  - {fileID: 1000014193256510, guid: e03798e8021324545abf86d22fb01fe4, type: 2}
   - {fileID: 1000013289400700, guid: 7fb6f1692326075459e91748303442bb, type: 2}
+  - {fileID: 1000011759996574, guid: 9b464de9ff0912d47920287005d67673, type: 2}
   - {fileID: 1000010628121746, guid: a9d4708aaaa83f440b7b7fbfc5140aac, type: 2}
+  - {fileID: 1000012192800778, guid: 579a6cdbf7041ee4eba5f935ac289c1e, type: 2}
+  - {fileID: 1000012642387300, guid: 135e5a6c8adcecc4b94ebe0afa783cbd, type: 2}
   finishLinePrefab: {fileID: 1000012899800362, guid: d928abe55a032d143bb20727e2ce547d,
     type: 2}
 --- !u!114 &409806241

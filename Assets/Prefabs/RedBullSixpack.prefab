@@ -86,10 +86,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 1.5
+  eatSize: 4.5
   rotationRange: 50
-  minimumPlayerSize: 0
-  maximumPlayerSize: 0
+  minimumPlayerSize: 3.5
+  maximumPlayerSize: 7.5
 --- !u!114 &114000012324324578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d5ed85c0a4ef4092ca9acf1b37bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeedModifier: 15
+  horizontalSpeedModifier: 20
   ownSpeed: {x: 0, y: 0}
 --- !u!212 &212000013198285240
 SpriteRenderer:
