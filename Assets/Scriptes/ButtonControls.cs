@@ -11,7 +11,6 @@ public class ButtonControls : MonoBehaviour {
     private bool isControlsPlaying = false;
     private float width;
     private float height;
-    public float controlSpeed = 0.3f;
     private float x;
 
     void Start()
@@ -51,9 +50,10 @@ public class ButtonControls : MonoBehaviour {
 
         if (isControlsPlaying)
         {
-            if (controls.transform.position.y <= height)
+            Debug.Log(height*2 - height*2 / 8);
+            if (controls.transform.position.y <= (height*2 - height*2 / 8))
             {
-                controls.transform.position = Vector2.Lerp(controls.transform.position, new Vector2(controls.transform.position.x, controls.transform.position.y + height), controlSpeed * Time.deltaTime);
+                controls.transform.position = Vector2.Lerp(controls.transform.position, new Vector2(controls.transform.position.x, controls.transform.position.y + height), 0.1f * Time.deltaTime);
             }
             else
             {
