@@ -6,13 +6,14 @@ public class Food : MonoBehaviour
 
 	private Vector3 startPosition;
 	public float eatSize = 1;
+    public float rotationRange = 50;
 
 	// Use this for initialization
 	void Start () 
 	{
 		startPosition = transform.position;
         Rigidbody2D phisi = gameObject.GetComponent<Rigidbody2D>();
-        phisi.rotation = Random.Range(-10f, 10f);
+        phisi.AddTorque(Random.Range(-rotationRange,rotationRange));
     }
 	
 	// Update is called once per frame
