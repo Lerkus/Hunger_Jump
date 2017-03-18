@@ -26,6 +26,12 @@ public class AirplaneStartScene : MonoBehaviour {
         if(col.gameObject.tag == "SceneStartSwitch")
         {
             SceneManager.LoadScene("title");
+            
+        }
+        if (col.gameObject.tag == "LosePackage")
+        {
+            colider.SetActive(false);
+
         }
 
     }
