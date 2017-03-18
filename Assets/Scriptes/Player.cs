@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
+	public ParticleSystem PukeSystem;
 	public GameObject PlayerRotationObj;
 	public float RotationSpeed = 0.1f;
 	public float MaxRotationAngle = 40;
@@ -14,6 +16,7 @@ public class Player : MonoBehaviour
 
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
+    public Text scoreUiToUpdate;
 
     private float timeStampStart;
     public float slowSpeed = 4;
@@ -34,6 +37,7 @@ public class Player : MonoBehaviour
 	public Vector2 RotationRange = new Vector2(320, 20);
 
 	bool lockRot = false;
+	bool crash = false;
 
 	// Use this for initialization
 	void Start () {
@@ -105,29 +109,85 @@ public class Player : MonoBehaviour
 			this.lockRot = true;
 		}
 
+		if (crash) 
+		{
+			transform.Rotate( new Vector3(0,0, 15));
+		}
+
+	}
+
+	public void StartPage() {
+		print("in StartPage()");
+		StartCoroutine(FinishFirst(5.0f));
+	}
+
+	IEnumerator FinishFirst(float waitTime) {
+		print("in FinishFirst");
+		yield return new WaitForSeconds(waitTime);
+		print("leave FinishFirst");
+		EndCrash();
+	}
+
+	void DoLast() {
+		print("do after everything is finished");
+		print("done");
+	}
+
+	void EndCrash()
+	{
+		crash = false;
+	}
+
+	void ScaleAndEatAll(Food foodData)
+	{
+		foodData.respawn ();
+		updatePlayerSize ();
+		this.Scale ();
+		this.ScaleCamera ();
+		eating.SetTrigger ("isEating");
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "food") 
-		{
-            Food foodData = col.gameObject.GetComponent<Food>();
+		StartCoroutine(FinishFirst(0.5f));
+
+
+		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") {
+			Food foodData = col.gameObject.GetComponent<Food> ();
 
 			if (foodData.eatSize <= PlayerSize) 
 			{
-				foodData.respawn ();
-                amountFoodEaten += foodData.eatSize;
-                updatePlayerSize();
-				this.Scale ();
-				this.ScaleCamera ();
-                eating.SetTrigger("isEating");
+				if (col.gameObject.tag == "trash") 
+				{
+					PukeSystem.Play ();
+					amountFoodEaten -= foodData.eatSize * foodData.eatSize;
+				} 
+				else 
+				{
+					amountFoodEaten += foodData.eatSize * foodData.eatSize;
+				}
+				ScaleAndEatAll (foodData);
+			}
+			else 
+			{
+				if (col.gameObject.tag == "heli") 
+				{
+					crash = true;
+					PukeSystem.Play ();
+					amountFoodEaten -= (amountFoodEaten/100) * 5;
+					if (amountFoodEaten < 0) {
+						amountFoodEaten = 0;
+					}
+
+					ScaleAndEatAll (foodData);
+				}
 			}
 
-			if(foodData.eatSize > PlayerSize)
-			{
+			if (foodData.eatSize > PlayerSize) {
 				timeStampStart = Time.time;
 			}
-		}
+		} 
+
 
         if(col.gameObject.tag == "finish")
         {
@@ -137,8 +197,9 @@ public class Player : MonoBehaviour
 
     private void updatePlayerSize()
     {
-        PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
-
+        PlayerSize = Mathf.Log(amountFoodEaten,2);
+        PlayerSize = Mathf.Clamp(PlayerSize,1,20);
+        scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
         Debug.Log(PlayerSize);
     }
 	public void Scale()

@@ -21,7 +21,7 @@ public class MoveDeadzone : MonoBehaviour {
 
 	public void RecalculatePosition()
 	{
-		transform.position = new Vector3 (transform.position.x, spawner.OrthographicBounds().max.y+100f, 0);
+		transform.position = new Vector3 (transform.position.x, spawner.OrthographicBounds().max.y+30f, 0);
 		//GetComponent<BoxCollider2D> ().size += new Vector2 (1, 0);
 	}
 }

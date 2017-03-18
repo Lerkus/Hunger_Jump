@@ -11,6 +11,8 @@ TagManager:
   - LosePackage
   - default
   - finish
+  - trash
+  - heli
   layers:
   - Default
   - TransparentFX

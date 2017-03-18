@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/kegel/hoomans/black/hooman5.png.meta
+guid: bc878d2a8704d1a4fa9209687aac4077
+timeCreated: 1489860287
+=======
 guid: 41c6f9f5b62a4874792312e1d062fbf5
 timeCreated: 1489855726
+>>>>>>> 6d10f5e5eb671647237b1b217c9f800f85f94027:Assets/Sprites/kegel/hoomans/black/hooman5.png.meta
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
