@@ -3,19 +3,22 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour
 {
+    public bool shouldSpawnObjects = true;
     public GameObject Camera;
     public GameObject cloudFast;
-    public float cloudSpawnCycleTime = 0.5f;
     public GameObject cloudSlow;
+    public float cloudSpawnCycleTime = 0.5f;
     public float fallingObjectsSpawnCycleTime = 0.5f;
-    public bool shouldSpawnObjects = true;
 
-	public float AdditionHorizontalSpawnratio = 5f;
-
+    public int spawnsPerCycle = 3;
+    public Player playerData;
     public GameObject masterParent;
 
-    Vector2 spawnRangeLeftPoint;
-    Vector2 spawnRangeRightPoint;
+    public float AdditionHorizontalSpawnratio = 5f;
+
+
+    public Vector2 spawnRangeLeftPoint;
+    public Vector2 spawnRangeRightPoint;
 
     public GameObject[] fallingObjectsPrefabs;
     public GameObject finishLinePrefab;
@@ -45,7 +48,22 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fallingObjectsSpawnCycleTime);
-            spawnObject(fallingObjectsPrefabs[Random.Range(0, fallingObjectsPrefabs.Length)]);
+            bool spawnSucess = false;
+            for (int i = 0; i < spawnsPerCycle; i++)
+            {
+                while (!spawnSucess)
+                {
+                    spawnSucess = false;
+                    int randomIndex = Random.Range(0, fallingObjectsPrefabs.Length);
+                    Food foodData = fallingObjectsPrefabs[randomIndex].GetComponent<Food>();
+
+                    if (playerData.PlayerSize > foodData.minimumPlayerSize && playerData.PlayerSize < foodData.maximumPlayerSize)
+                    {
+                        spawnSucess = true;
+                        spawnObject(fallingObjectsPrefabs[randomIndex]);
+                    }
+                }
+            }
         }
     }
 
@@ -71,8 +89,8 @@ public class Spawner : MonoBehaviour
 
     public void RecalculateSpawnPosition()
     {
-		spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x - AdditionHorizontalSpawnratio, OrthographicBounds().min.y-10f);
-		spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x + AdditionHorizontalSpawnratio, OrthographicBounds().min.y-10f);
+        spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x - AdditionHorizontalSpawnratio, OrthographicBounds().min.y - 5f);
+        spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x + AdditionHorizontalSpawnratio, OrthographicBounds().min.y - 5f);
     }
 
     public void spawnFinishLine()

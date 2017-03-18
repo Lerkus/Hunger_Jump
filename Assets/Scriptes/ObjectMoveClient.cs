@@ -5,12 +5,12 @@ public class ObjectMoveClient : MonoBehaviour
 {
 
     public float horizontalSpeedModifier;
-
+    public Vector2 ownSpeed = new Vector2();
 
     public void updateVelocity(float horizontalSpeed)
     {
         Rigidbody2D toManipulate = gameObject.GetComponent<Rigidbody2D>();
 
-        toManipulate.velocity = new Vector2(horizontalSpeed * horizontalSpeedModifier, toManipulate.velocity.y);
+        toManipulate.velocity = ownSpeed + new Vector2(horizontalSpeed * horizontalSpeedModifier, toManipulate.velocity.y);
     }
 }
