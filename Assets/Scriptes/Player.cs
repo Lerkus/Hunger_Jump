@@ -68,7 +68,9 @@ public class Player : MonoBehaviour
 
 		//Debug.Log ("Log: " + transform.localScale.ToString());
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
-		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime/5);
+		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime);
+
+		Debug.Log("CameraSize: " + Camera.GetComponent<Camera>().orthographicSize + "TargetSize: " + NewCameraScale + "OriginTarget: " + OldCameraScale);
 
 		float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour
 			if( PlayerRotationObj.transform.rotation.eulerAngles.z < RotationRange.x && PlayerRotationObj.transform.rotation.eulerAngles.z > RotationRange.y)
 			{
 				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
-				Debug.Log ("++Angle" + (RotationSpeed * horizontalInput));
+				//Debug.Log ("++Angle" + (RotationSpeed * horizontalInput));
 				this.lockRot = false;
 			}
 		} 
@@ -140,19 +142,19 @@ public class Player : MonoBehaviour
     private void updatePlayerSize()
     {
         PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
-        Debug.Log(PlayerSize);
+        //Debug.Log(PlayerSize);
     }
 	public void Scale()
 	{
 		OldPlayerScale = transform.localScale;
 
 		NewPlayerScale = playerStartScale * PlayerSize * 3;
-		Debug.Log ("ScalePlayer");
+		//Debug.Log ("ScalePlayer");
 	}
 
 	private void ScaleCamera()
 	{
-		OldCameraScale = NewCameraScale;
+		OldCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
 		NewCameraScale =  PlayerSize * camStartScale;
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
