@@ -8,11 +8,13 @@ public class ButtonControls : MonoBehaviour {
     public GameObject controls;
     private bool isClicked = false;
     private bool isControlsPlaying = false;
+    public bool isItVisible;
 
     void Start()
     {
         isClicked = false;
         isControlsPlaying = false;
+        isItVisible = false;
     }
 
     public void clicked()
@@ -22,7 +24,13 @@ public class ButtonControls : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        
+        isItVisible = false;
+        Debug.Log("CONTROL INVISIBLE");
+    }
+
+    void OnBecameVisible()
+    {
+        isItVisible = true;
     }
 
     void Update()

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010422703308}
   - 212: {fileID: 212000012567532550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cloud (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012184783994}
   - 212: {fileID: 212000011110036216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,8 @@ GameObject:
   - 50: {fileID: 50000013178865706}
   - 114: {fileID: 114000010053074146}
   - 114: {fileID: 114000010378052334}
-  m_Layer: 0
+  - 61: {fileID: 61000014054438248}
+  m_Layer: 8
   m_Name: Cloud Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +71,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013683602906}
   - 212: {fileID: 212000011538585256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cloud (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +150,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61000014054438248
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013932057028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &114000010053074146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeedModifier: 1
+  ownSpeed: {x: 0, y: 0}
 --- !u!212 &212000011110036216
 SpriteRenderer:
   m_ObjectHideFlags: 1

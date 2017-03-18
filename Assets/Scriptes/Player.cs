@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 	public Spawner spawner;
 	public MoveDeadzone deadzone;
 	public float PlayerSize = 1;
+    private float amountFoodEaten = 0;
 	public float GrowRate = 1;
 	public GameObject Camera;
 
@@ -18,11 +19,14 @@ public class Player : MonoBehaviour
     public float normalSpeed = 9.81f;
     public float timeToReAccelerate = 3;
 
+    private float camStartScale;
+    private Vector3 playerStartScale;
 
     public Animator eating;
 
 	public float NewCameraScale;
 	public float OldCameraScale;
+
 	public Vector3 NewPlayerScale;
 	public Vector3 OldPlayerScale;
 
@@ -32,11 +36,15 @@ public class Player : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		NewPlayerScale = transform.localScale;
-		OldPlayerScale = transform.localScale;
-		NewCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
-		OldCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
+        Camera camData = Camera.GetComponent<Camera>();
 
+        NewPlayerScale = transform.localScale;
+		OldPlayerScale = transform.localScale;
+		NewCameraScale = camData.orthographicSize;
+		OldCameraScale = camData.orthographicSize;
+
+        playerStartScale = transform.localScale;
+        camStartScale = camData.orthographicSize;
 		Scale ();
 	}
 	
@@ -107,19 +115,20 @@ public class Player : MonoBehaviour
 		{
             Food foodData = col.gameObject.GetComponent<Food>();
 
-			if (foodData.eatSize < PlayerSize) 
+			if (foodData.eatSize <= PlayerSize) 
 			{
 				foodData.respawn ();
-				PlayerSize += 0.1f * col.gameObject.GetComponent<Food> ().eatSize;
+                amountFoodEaten += foodData.eatSize;
+                updatePlayerSize();
 				this.Scale ();
 				this.ScaleCamera ();
+                eating.SetTrigger("isEating");
 			}
 
 			if(foodData.eatSize > PlayerSize)
 			{
 				timeStampStart = Time.time;
 			}
-            eating.SetTrigger("isEating");
 		}
 
         if(col.gameObject.tag == "finish")
@@ -128,22 +137,24 @@ public class Player : MonoBehaviour
         }
 	}
 
+    private void updatePlayerSize()
+    {
+        PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
+        Debug.Log(PlayerSize);
+    }
 	public void Scale()
 	{
 		OldPlayerScale = transform.localScale;
 
-		NewPlayerScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
+		NewPlayerScale = playerStartScale * PlayerSize * 3;
 		Debug.Log ("ScalePlayer");
-
 	}
 
 	private void ScaleCamera()
 	{
 		OldCameraScale = NewCameraScale;
-		NewCameraScale += PlayerSize * GrowRate * 10f;
-		//Camera.GetComponent<Camera> ().orthographicSize += PlayerSize * GrowRate * 10;
+		NewCameraScale =  PlayerSize * camStartScale;
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
-		//Camera.transform.localScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
 	}
 }

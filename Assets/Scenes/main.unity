@@ -245,9 +245,9 @@ MonoBehaviour:
   cloudFast: {fileID: 1000010201612790, guid: 4bf2ef77267fcea4c861b4206d69c21c, type: 2}
   cloudSpawnCycleTime: 0.5
   cloudSlow: {fileID: 1000013932057028, guid: de44c808abbaa054a91fa02c594b5fae, type: 2}
-  fallingObjectsSpawnCycleTime: 0.3
+  fallingObjectsSpawnCycleTime: 0.1
   shouldSpawnObjects: 1
-  AdditionHorizontalSpawnratio: 5
+  AdditionHorizontalSpawnratio: 20
   masterParent: {fileID: 1573343057}
   fallingObjectsPrefabs:
   - {fileID: 1000010628121746, guid: a9d4708aaaa83f440b7b7fbfc5140aac, type: 2}
@@ -471,23 +471,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4000010686649014, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010686649014, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114000013120408164, guid: aed922a8bd9faae488a3fcf071b59354,
         type: 2}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 409806240}
-    - target: {fileID: 1000011232974398, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
   m_IsPrefabParent: 0
@@ -732,11 +720,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 50000013991145156, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
       propertyPath: spawner
@@ -744,45 +727,19 @@ Prefab:
       objectReference: {fileID: 409806240}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
+      propertyPath: deadzone
+      value: 
+      objectReference: {fileID: 980861022}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 67928794}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
-      propertyPath: deadzone
-      value: 
-      objectReference: {fileID: 980861022}
-    - target: {fileID: 95000010427977722, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: deb42648cb3e88740941be81a1ff176d, type: 2}
-    - target: {fileID: 212000012738508320, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: GrowRate
+      value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 4000013920662628, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 3.8274217
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013144134284, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.93550545
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013049384362, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.8701887
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012143549806, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.8710109
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: eating
-      value: 
-      objectReference: {fileID: 2130855118}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
   m_IsPrefabParent: 0
@@ -860,8 +817,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893227617}
---- !u!95 &2130855118 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000011298344000, guid: ed3b33173f934e645953bfd432c2a3d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1874491043}
