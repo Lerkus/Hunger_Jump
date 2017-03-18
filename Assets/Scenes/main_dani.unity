@@ -614,6 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eatSize: 1
+  rotationRange: 50
 --- !u!61 &1429744840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -688,12 +689,14 @@ Prefab:
         type: 2}
       propertyPath: cloudFast
       value: 
-      objectReference: {fileID: 2020340852}
+      objectReference: {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61,
+        type: 2}
     - target: {fileID: 114000011126802996, guid: 135b024dc2040214091e5152f52690ca,
         type: 2}
       propertyPath: cloudSlow
       value: 
-      objectReference: {fileID: 2020340852}
+      objectReference: {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61,
+        type: 2}
     - target: {fileID: 114000011126802996, guid: 135b024dc2040214091e5152f52690ca,
         type: 2}
       propertyPath: Camera
@@ -764,8 +767,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1 &2020340852 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61,
-    type: 2}
-  m_PrefabInternal: {fileID: 1040607643}

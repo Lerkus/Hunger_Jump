@@ -15,15 +15,38 @@ public class Player : MonoBehaviour
     public float normalSpeed = 9.81f;
     public float timeToReAccelerate = 3;
 
+	public float NewCameraScale;
+	public float OldCameraScale;
+	public Vector3 NewPlayerScale;
+	public Vector3 OldPlayerScale;
+
 	// Use this for initialization
 	void Start () {
-	
+		NewPlayerScale = transform.localScale;
+		OldPlayerScale = transform.localScale;
+		NewCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
+		OldCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
+
+		Scale ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-        Physics2D.gravity = new Vector2(0, Mathf.Lerp(slowSpeed,normalSpeed, Mathf.Clamp01(Time.time/(timeStampStart + timeToReAccelerate))));
+        
+	}
+
+	void FixedUpdate()
+	{
+		Physics2D.gravity = new Vector2(0, Mathf.Lerp(slowSpeed,normalSpeed, Mathf.Clamp01(Time.time/(timeStampStart + timeToReAccelerate))));
+
+
+
+		transform.localScale = Vector3.Lerp (OldPlayerScale, NewPlayerScale, Time.deltaTime);
+
+		//Debug.Log ("Log: " + transform.localScale.ToString());
+		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
+		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime/5);
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -51,12 +74,18 @@ public class Player : MonoBehaviour
 
 	public void Scale()
 	{
-		transform.localScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
+		OldPlayerScale = transform.localScale;
+
+		NewPlayerScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
+		Debug.Log ("ScalePlayer");
+
 	}
 
 	private void ScaleCamera()
 	{
-		Camera.GetComponent<Camera> ().orthographicSize += PlayerSize * GrowRate * 10;
+		OldCameraScale = NewCameraScale;
+		NewCameraScale += PlayerSize * GrowRate * 10f;
+		//Camera.GetComponent<Camera> ().orthographicSize += PlayerSize * GrowRate * 10;
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
 		//Camera.transform.localScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
