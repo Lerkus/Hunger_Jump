@@ -88,8 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eatSize: 1
   rotationRange: 50
-  minimumPlayerSize: -10000000
-  maximumPlayerSize: 3
+  minimumPlayerSize: 0
+  maximumPlayerSize: 4
 --- !u!114 &114000013771996922
 MonoBehaviour:
   m_ObjectHideFlags: 1

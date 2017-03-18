@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 1.5
+  eatSize: 2
   rotationRange: 50
-  minimumPlayerSize: 1.25
-  maximumPlayerSize: 999
+  minimumPlayerSize: 2
+  maximumPlayerSize: 6
 --- !u!212 &212000011818546314
 SpriteRenderer:
   m_ObjectHideFlags: 1

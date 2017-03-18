@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b70befac46d3a46b1c373111adcd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSize: 8
+  eatSize: 6
   rotationRange: 50
   minimumPlayerSize: 8
   maximumPlayerSize: 20
