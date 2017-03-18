@@ -246,10 +246,12 @@ MonoBehaviour:
   cloudSpawnCycleTime: 999999
   cloudSlow: {fileID: 1503348880}
   fallingObjectsSpawnCycleTime: 0.3
+  shouldSpawnObjects: 1
   masterParent: {fileID: 1573343057}
   fallingObjectsPrefabs:
   - {fileID: 1000010641643938, guid: 10fd28c4bde81304d8dafdf19ae4ef61, type: 2}
-  finishLinePrefab: {fileID: 0}
+  finishLinePrefab: {fileID: 1000012899800362, guid: d928abe55a032d143bb20727e2ce547d,
+    type: 2}
 --- !u!114 &409806241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHeight: 1000
   uiToUpdate: {fileID: 1893227617}
+  finishHeight: 50
+  spawner: {fileID: 409806240}
 --- !u!1 &579202257
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +418,11 @@ Prefab:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 409806240}
+    - target: {fileID: 114000010656394800, guid: 4ea126723643c3340895a92b6c2d61f4,
+        type: 2}
+      propertyPath: deadzone
+      value: 
+      objectReference: {fileID: 980861022}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ea126723643c3340895a92b6c2d61f4, type: 2}
   m_IsPrefabParent: 0
@@ -464,9 +473,20 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013120408164, guid: aed922a8bd9faae488a3fcf071b59354,
+        type: 2}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 409806240}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &980861022 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013120408164, guid: aed922a8bd9faae488a3fcf071b59354,
+    type: 2}
+  m_PrefabInternal: {fileID: 863065019}
+  m_Script: {fileID: 11500000, guid: be79783eea7f52c4c96b43b04ac13a7d, type: 3}
 --- !u!1001 &1283586034
 Prefab:
   m_ObjectHideFlags: 0
@@ -505,6 +525,10 @@ Prefab:
     - target: {fileID: 4000012842386920, guid: d928abe55a032d143bb20727e2ce547d, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012899800362, guid: d928abe55a032d143bb20727e2ce547d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50000014068448980, guid: d928abe55a032d143bb20727e2ce547d, type: 2}
