@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour 
 {
 	public GameObject PlayerRotationObj;
-	public float RotationSpeed = 30;
+	public float RotationSpeed = 0.1f;
 	public float MaxRotationAngle = 40;
 	public Spawner spawner;
 	public MoveDeadzone deadzone;
@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 	public Vector3 NewPlayerScale;
 	public Vector3 OldPlayerScale;
 
+	public Vector2 RotationRange = new Vector2(320, 20);
+
 	bool lockRot = false;
 
 	// Use this for initialization
@@ -41,41 +43,11 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		float horizontalInput = Input.GetAxis("Horizontal");
+		
 		//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
 
 
-		if (horizontalInput > 0) 
-		{
-			if (!lockRot) 
-			{
-				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
-			}
 
-			if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
-			{
-				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
-				this.lockRot = false;
-			}
-		} 
-		else 
-		{
-			if (!lockRot) 
-			{
-				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
-			}
-
-			if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
-			{
-				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
-				this.lockRot = false;
-			}
-		}
-
-		if( PlayerRotationObj.transform.rotation.eulerAngles.z < 300 && PlayerRotationObj.transform.rotation.eulerAngles.z > 60)
-		{
-			this.lockRot = true;
-		}
 	}
 
 	void FixedUpdate()
@@ -89,6 +61,43 @@ public class Player : MonoBehaviour
 		//Debug.Log ("Log: " + transform.localScale.ToString());
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
 		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime/5);
+
+		float horizontalInput = Input.GetAxis("Horizontal");
+
+		// Rotate Player
+		if (horizontalInput > 0) 
+		{
+			if (!lockRot) 
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
+			}
+
+			if( PlayerRotationObj.transform.rotation.eulerAngles.z < RotationRange.x && PlayerRotationObj.transform.rotation.eulerAngles.z > RotationRange.y)
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
+				Debug.Log ("++Angle" + (RotationSpeed * horizontalInput));
+				this.lockRot = false;
+			}
+		} 
+		else 
+		{
+			if (!lockRot) 
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, RotationSpeed * horizontalInput);
+			}
+
+			if( PlayerRotationObj.transform.rotation.eulerAngles.z < RotationRange.x && PlayerRotationObj.transform.rotation.eulerAngles.z > RotationRange.y)
+			{
+				PlayerRotationObj.transform.Rotate (0, 0, -(RotationSpeed * horizontalInput));
+
+				this.lockRot = false;
+			}
+		}
+
+		if( PlayerRotationObj.transform.rotation.eulerAngles.z < RotationRange.x && PlayerRotationObj.transform.rotation.eulerAngles.z > RotationRange.y)
+		{
+			this.lockRot = true;
+		}
 
 	}
 
