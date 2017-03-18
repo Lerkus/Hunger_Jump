@@ -241,17 +241,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d288718befb12140b4bd023cdb307b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldSpawnObjects: 1
   Camera: {fileID: 67928794}
   cloudFast: {fileID: 1000010201612790, guid: 4bf2ef77267fcea4c861b4206d69c21c, type: 2}
-  cloudSpawnCycleTime: 0.5
   cloudSlow: {fileID: 1000013932057028, guid: de44c808abbaa054a91fa02c594b5fae, type: 2}
-  fallingObjectsSpawnCycleTime: 0.1
-  shouldSpawnObjects: 1
+  cloudSpawnCycleTime: 0.5
+  fallingObjectsSpawnCycleTime: 0.6
+  smallObjectsPerSpawnCycle: 5
+  normalObjectsPerSpawnCycle: 2
+  hugeObjectsPerSpawnCycle: 1
   AdditionHorizontalSpawnratio: 20
   masterParent: {fileID: 1573343057}
-  fallingObjectsPrefabs:
-  - {fileID: 1000010628121746, guid: a9d4708aaaa83f440b7b7fbfc5140aac, type: 2}
+  spawnRangeLeftPoint: {x: 0, y: 0}
+  spawnRangeRightPoint: {x: 0, y: 0}
+  spawnPhase: 0
+  smallFallingObjectsPrefabs:
   - {fileID: 1000013289400700, guid: 7fb6f1692326075459e91748303442bb, type: 2}
+  - {fileID: 1000010628121746, guid: a9d4708aaaa83f440b7b7fbfc5140aac, type: 2}
+  normalFallingObjectsPrefabs:
+  - {fileID: 1000013226954278, guid: 84bccd371af6794409b052ebb7c6636a, type: 2}
+  - {fileID: 1000011759996574, guid: 9b464de9ff0912d47920287005d67673, type: 2}
+  hugeFallingObjectsPrefabs:
+  - {fileID: 1000011243235708, guid: 135e5a6c8adcecc4b94ebe0afa783cbd, type: 2}
   finishLinePrefab: {fileID: 1000012899800362, guid: d928abe55a032d143bb20727e2ce547d,
     type: 2}
 --- !u!114 &409806241
@@ -343,6 +354,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!1 &728514039 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013233859166, guid: ed3b33173f934e645953bfd432c2a3d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1874491043}
 --- !u!1 &750450342
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +755,16 @@ Prefab:
         type: 2}
       propertyPath: GrowRate
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
+      propertyPath: PlayerRotationObj
+      value: 
+      objectReference: {fileID: 728514039}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
+      propertyPath: RotationSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}

@@ -53,14 +53,14 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(fallingObjectsSpawnCycleTime);
 
-            if (spawnPhase == 0)
+            if (spawnPhase >= 0)
             {
                 for (int i = 0; i < smallObjectsPerSpawnCycle; i++)
                 {
                     spawnObject(smallFallingObjectsPrefabs[Random.Range(0, smallFallingObjectsPrefabs.Length)]);
                 }
             }
-            if (spawnPhase == 1)
+            if (spawnPhase >= 1)
             {
                 for (int i = 0; i < normalObjectsPerSpawnCycle; i++)
                 {
@@ -68,7 +68,7 @@ public class Spawner : MonoBehaviour
                 }
             }
 
-            if (spawnPhase == 2)
+            if (spawnPhase >= 2)
             {
                 for (int i = 0; i < hugeObjectsPerSpawnCycle; i++)
                 {
