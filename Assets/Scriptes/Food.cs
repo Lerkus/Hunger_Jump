@@ -7,6 +7,8 @@ public class Food : MonoBehaviour
 	private Vector3 startPosition;
 	public float eatSize = 1;
     public float rotationRange = 50;
+    public float minimumPlayerSize;
+    public float maximumPlayerSize;
 
 	void Start () 
 	{

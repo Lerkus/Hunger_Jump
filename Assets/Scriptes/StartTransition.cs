@@ -11,7 +11,7 @@ public class StartTransition : MonoBehaviour {
 
     public void clicked()
     {
-        SceneManager.LoadScene("start");
+        SceneManager.LoadScene("main");
     }
 	
 	// Update is called once per frame

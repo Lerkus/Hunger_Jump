@@ -10,21 +10,17 @@ public class Spawner : MonoBehaviour
     public float cloudSpawnCycleTime = 0.5f;
     public float fallingObjectsSpawnCycleTime = 0.5f;
 
-    public int smallObjectsPerSpawnCycle = 5;
-    public int normalObjectsPerSpawnCycle = 2;
-    public int hugeObjectsPerSpawnCycle = 1;
+    public int spawnsPerCycle = 3;
+    public Player playerData;
+    public GameObject masterParent;
 
     public float AdditionHorizontalSpawnratio = 5f;
 
-    public GameObject masterParent;
 
     public Vector2 spawnRangeLeftPoint;
     public Vector2 spawnRangeRightPoint;
-    public int spawnPhase = 0;
 
-    public GameObject[] smallFallingObjectsPrefabs;
-    public GameObject[] normalFallingObjectsPrefabs;
-    public GameObject[] hugeFallingObjectsPrefabs;
+    public GameObject[] fallingObjectsPrefabs;
     public GameObject finishLinePrefab;
 
     private Coroutine cloudSpawnRoutine;
@@ -52,27 +48,20 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fallingObjectsSpawnCycleTime);
+            bool spawnSucess = false;
+            for (int i = 0; i < spawnsPerCycle; i++)
+            {
+                while (!spawnSucess)
+                {
+                    spawnSucess = false;
+                    int randomIndex = Random.Range(0, fallingObjectsPrefabs.Length);
+                    Food foodData = fallingObjectsPrefabs[randomIndex].GetComponent<Food>();
 
-            if (spawnPhase >= 0)
-            {
-                for (int i = 0; i < smallObjectsPerSpawnCycle; i++)
-                {
-                    spawnObject(smallFallingObjectsPrefabs[Random.Range(0, smallFallingObjectsPrefabs.Length)]);
-                }
-            }
-            if (spawnPhase >= 1)
-            {
-                for (int i = 0; i < normalObjectsPerSpawnCycle; i++)
-                {
-                    spawnObject(normalFallingObjectsPrefabs[Random.Range(0, normalFallingObjectsPrefabs.Length)]);
-                }
-            }
-
-            if (spawnPhase >= 2)
-            {
-                for (int i = 0; i < hugeObjectsPerSpawnCycle; i++)
-                {
-                    spawnObject(hugeFallingObjectsPrefabs[Random.Range(0, hugeFallingObjectsPrefabs.Length)]);
+                    if (playerData.PlayerSize > foodData.minimumPlayerSize && playerData.PlayerSize < foodData.maximumPlayerSize)
+                    {
+                        spawnSucess = true;
+                        spawnObject(fallingObjectsPrefabs[randomIndex]);
+                    }
                 }
             }
         }

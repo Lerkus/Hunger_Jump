@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eatSize: 1.5
   rotationRange: 50
+  minimumPlayerSize: 1.25
+  maximumPlayerSize: 999
 --- !u!212 &212000011818546314
 SpriteRenderer:
   m_ObjectHideFlags: 1

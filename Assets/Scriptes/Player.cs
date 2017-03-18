@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
@@ -13,12 +14,9 @@ public class Player : MonoBehaviour
 	public MoveDeadzone deadzone;
 	public Spawner spawner;
 
-    public float playerSizeNeededForNormalFoodToSpawn = 3;
-    public float playerSizeNeededForHugeFoodToSpawn = 6;
-
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
-	public float GrowRate = 1;
+    public Text scoreUiToUpdate;
 
     private float timeStampStart;
     public float slowSpeed = 4;
@@ -57,11 +55,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
-		//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
-
-
-
 	}
 
 	void FixedUpdate()
@@ -126,7 +119,7 @@ public class Player : MonoBehaviour
 			if (foodData.eatSize <= PlayerSize) 
 			{
 				foodData.respawn ();
-                amountFoodEaten += foodData.eatSize;
+                amountFoodEaten += foodData.eatSize * foodData.eatSize;
                 updatePlayerSize();
 				this.Scale ();
 				this.ScaleCamera ();
@@ -155,20 +148,8 @@ public class Player : MonoBehaviour
     private void updatePlayerSize()
     {
         PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
-
+        scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
         Debug.Log(PlayerSize);
-
-        if(PlayerSize >= playerSizeNeededForNormalFoodToSpawn)
-        {
-            if(PlayerSize >= playerSizeNeededForHugeFoodToSpawn)
-            {
-                spawner.spawnPhase = 2;
-            }
-            else
-            {
-                spawner.spawnPhase = 1;
-            }
-        }
     }
 	public void Scale()
 	{
