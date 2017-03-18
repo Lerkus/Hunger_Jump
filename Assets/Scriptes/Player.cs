@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
 
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
+    public Text scoreUiToUpdate;
 
     private float timeStampStart;
     public float slowSpeed = 4;
@@ -116,7 +118,7 @@ public class Player : MonoBehaviour
 			if (foodData.eatSize <= PlayerSize) 
 			{
 				foodData.respawn ();
-                amountFoodEaten += foodData.eatSize;
+                amountFoodEaten += foodData.eatSize * foodData.eatSize;
                 updatePlayerSize();
 				this.Scale ();
 				this.ScaleCamera ();
@@ -138,7 +140,7 @@ public class Player : MonoBehaviour
     private void updatePlayerSize()
     {
         PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
-
+        scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
         Debug.Log(PlayerSize);
     }
 	public void Scale()

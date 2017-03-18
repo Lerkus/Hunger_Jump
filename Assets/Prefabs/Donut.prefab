@@ -88,6 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eatSize: 1
   rotationRange: 50
+  minimumPlayerSize: 0
+  maximumPlayerSize: 3
 --- !u!114 &114000013771996922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeedModifier: 15
+  ownSpeed: {x: 0, y: 0}
 --- !u!212 &212000013129229544
 SpriteRenderer:
   m_ObjectHideFlags: 1
