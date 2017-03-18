@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
+	public Spawner spawner;
+	public MoveDeadzone deadzone;
 	public float PlayerSize = 1;
 	public float GrowRate = 1;
 	public GameObject Camera;
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
 	private void ScaleCamera()
 	{
 		Camera.GetComponent<Camera> ().orthographicSize += PlayerSize * GrowRate * 10;
+		spawner.RecalculateSpawnPosition ();
+		deadzone.RecalculatePosition ();
 		//Camera.transform.localScale += new Vector3(PlayerSize * GrowRate, PlayerSize * GrowRate, PlayerSize *  GrowRate);
 	}
 }
