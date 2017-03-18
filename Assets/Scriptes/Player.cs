@@ -12,12 +12,8 @@ public class Player : MonoBehaviour
 	public MoveDeadzone deadzone;
 	public Spawner spawner;
 
-    public float playerSizeNeededForNormalFoodToSpawn = 3;
-    public float playerSizeNeededForHugeFoodToSpawn = 6;
-
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
-	public float GrowRate = 1;
 
     private float timeStampStart;
     public float slowSpeed = 4;
@@ -56,11 +52,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
-		//Debug.Log ("z rot:" + PlayerRotationObj.transform.rotation.eulerAngles.z +"Max: " + MaxRotationAngle);
-
-
-
 	}
 
 	void FixedUpdate()
@@ -146,20 +137,6 @@ public class Player : MonoBehaviour
     {
         PlayerSize = Mathf.Log(amountFoodEaten,2) + 1;
         Debug.Log(PlayerSize);
-
-        if(PlayerSize >= playerSizeNeededForNormalFoodToSpawn)
-        {
-            if(PlayerSize >= playerSizeNeededForHugeFoodToSpawn)
-            {
-                spawner.spawnPhase = 2;
-            }
-            else
-            {
-                spawner.spawnPhase = 1;
-            }
-        }
-
-
     }
 	public void Scale()
 	{
