@@ -4,7 +4,8 @@ using System.Collections;
 public class AirplaneStartScene : MonoBehaviour {
 
     public GameObject test;
-    public GameObject colider;
+    
+    
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,15 @@ public class AirplaneStartScene : MonoBehaviour {
             colider.SetActive(false);
         }
         test.transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "SceneStartSwitch")
+        {
+            
+        }
 
     }
 }
