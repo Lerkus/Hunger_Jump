@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public float normalSpeed = 9.81f;
     public float timeToReAccelerate = 3;
 
+    public Animator eating;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -40,7 +42,7 @@ public class Player : MonoBehaviour
             {
                 timeStampStart = Time.time;
             }
-
+            eating.SetTrigger("isEating");
 		}
 
         if(col.gameObject.tag == "finish")

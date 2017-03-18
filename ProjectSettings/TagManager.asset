@@ -45,12 +45,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Clouds Foreground
-    uniqueID: 959710487
+  - name: Clouds Background
+    uniqueID: 999790327
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Clouds Background
-    uniqueID: 999790327
+  - name: Clouds Foreground
+    uniqueID: 959710487
     locked: 0
