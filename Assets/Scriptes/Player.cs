@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
 		if (crash) 
 		{
-			transform.Rotate( new Vector3(0,0, 30));
+			transform.Rotate( new Vector3(0,0, 15));
 		}
 
 	}
@@ -138,35 +138,48 @@ public class Player : MonoBehaviour
 		crash = false;
 	}
 
+	void ScaleAndEatAll(Food foodData)
+	{
+		foodData.respawn ();
+		updatePlayerSize ();
+		this.Scale ();
+		this.ScaleCamera ();
+		eating.SetTrigger ("isEating");
+	}
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		StartCoroutine(FinishFirst(2.0f));
+		StartCoroutine(FinishFirst(0.5f));
 
 
 		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") {
 			Food foodData = col.gameObject.GetComponent<Food> ();
 
-			if (foodData.eatSize <= PlayerSize) {
-				if (col.gameObject.tag == "trash") {
+			if (foodData.eatSize <= PlayerSize) 
+			{
+				if (col.gameObject.tag == "trash") 
+				{
 					PukeSystem.Play ();
 					amountFoodEaten -= foodData.eatSize * foodData.eatSize;
-				} else {
+				} 
+				else 
+				{
 					amountFoodEaten += foodData.eatSize * foodData.eatSize;
 				}
-
-				foodData.respawn ();
-				updatePlayerSize ();
-				this.Scale ();
-				this.ScaleCamera ();
-				eating.SetTrigger ("isEating");
+				ScaleAndEatAll (foodData);
 			}
 			else 
 			{
-				crash = true;
-				PukeSystem.Play ();
-				amountFoodEaten -= (amountFoodEaten/100) * 5;
-				if (amountFoodEaten < 0) {
-					amountFoodEaten = 0;
+				if (col.gameObject.tag == "heli") 
+				{
+					crash = true;
+					PukeSystem.Play ();
+					amountFoodEaten -= (amountFoodEaten/100) * 5;
+					if (amountFoodEaten < 0) {
+						amountFoodEaten = 0;
+					}
+
+					ScaleAndEatAll (foodData);
 				}
 			}
 
