@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Sprites/kegel/hoomans.meta
 guid: 16295413407789748be43eff268230cc
 folderAsset: yes
 timeCreated: 1489853814
+=======
+guid: 849ea7beaee1044a6b90836f8a6786bf
+folderAsset: yes
+timeCreated: 1489854858
+>>>>>>> Stashed changes:Assets/Sprites/kegel/hoomans.meta
 licenseType: Free
 DefaultImporter:
   userData: 

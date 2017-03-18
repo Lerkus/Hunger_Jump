@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: e205f850ae9ddfe47bd223f5b570f709
 timeCreated: 1489853122
 licenseType: Free
@@ -10,6 +11,19 @@ TextureImporter:
     enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
+=======
+guid: 25ca888a0ed77456baa98dfb5fbc7a1d
+timeCreated: 1489854901
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+>>>>>>> Stashed changes
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -21,6 +35,7 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
+<<<<<<< Updated upstream
   generateCubemap: 0
   cubemapConvolution: 0
   cubemapConvolutionSteps: 7
@@ -31,13 +46,27 @@ TextureImporter:
   textureSettings:
     filterMode: -1
     aniso: 16
+=======
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+>>>>>>> Stashed changes
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+<<<<<<< Updated upstream
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
+=======
+  compressionQuality: 50
+>>>>>>> Stashed changes
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
@@ -45,10 +74,30 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+<<<<<<< Updated upstream
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
+=======
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+>>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites: []
