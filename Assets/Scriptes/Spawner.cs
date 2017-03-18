@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour
     public float fallingObjectsSpawnCycleTime = 0.5f;
     public bool shouldSpawnObjects = true;
 
+	public float AdditionHorizontalSpawnratio = 5f;
+
     public GameObject masterParent;
 
     Vector2 spawnRangeLeftPoint;
@@ -69,8 +71,8 @@ public class Spawner : MonoBehaviour
 
     public void RecalculateSpawnPosition()
     {
-        spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x, OrthographicBounds().min.y);
-        spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x, OrthographicBounds().min.y);
+		spawnRangeLeftPoint = new Vector2(OrthographicBounds().min.x - AdditionHorizontalSpawnratio, OrthographicBounds().min.y);
+		spawnRangeRightPoint = new Vector2(OrthographicBounds().max.x + AdditionHorizontalSpawnratio, OrthographicBounds().min.y);
     }
 
     public void spawnFinishLine()

@@ -17,7 +17,7 @@ public class ObjectMoveMaster : MonoBehaviour
             }
             else
             {
-                print("Move Client fehlt!");
+                Debug.Log("Move Client fehlt!");
             }
 
         }

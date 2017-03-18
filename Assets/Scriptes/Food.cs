@@ -6,12 +6,15 @@ public class Food : MonoBehaviour
 
 	private Vector3 startPosition;
 	public float eatSize = 1;
+    public float rotationRange = 50;
 
 	// Use this for initialization
 	void Start () 
 	{
 		startPosition = transform.position;
-	}
+        Rigidbody2D phisi = gameObject.GetComponent<Rigidbody2D>();
+        phisi.AddTorque(Random.Range(-rotationRange,rotationRange));
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -24,7 +27,8 @@ public class Food : MonoBehaviour
 		if (col.gameObject.tag == "deadzone") 
 		{
 			transform.position = startPosition;
-			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+            Rigidbody2D phisi = gameObject.GetComponent<Rigidbody2D>();
+            phisi.velocity = Vector2.zero;
             respawn();
 		}
 	}
