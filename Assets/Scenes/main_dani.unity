@@ -183,23 +183,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1738219832}
   m_Script: {fileID: 11500000, guid: 9d288718befb12140b4bd023cdb307b2, type: 3}
---- !u!1 &485753765 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011232974398, guid: aed922a8bd9faae488a3fcf071b59354,
+--- !u!114 &485753766 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013120408164, guid: aed922a8bd9faae488a3fcf071b59354,
     type: 2}
   m_PrefabInternal: {fileID: 863065019}
---- !u!114 &485753766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 485753765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be79783eea7f52c4c96b43b04ac13a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner: {fileID: 460494731}
 --- !u!1001 &491938779
 Prefab:
   m_ObjectHideFlags: 0
@@ -397,6 +386,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013120408164, guid: aed922a8bd9faae488a3fcf071b59354,
+        type: 2}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 460494731}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
   m_IsPrefabParent: 0
