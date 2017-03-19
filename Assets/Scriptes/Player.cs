@@ -44,10 +44,14 @@ public class Player : MonoBehaviour
 	bool crash = false;
 	bool zoomOut = false;
 
+	private SoundManager sound;
+
 	private float lerpscaletime;
 
 	// Use this for initialization
 	void Start () {
+		sound = GameObject.FindGameObjectWithTag ("sound").GetComponent<SoundManager>();
+
         Camera camData = Camera.GetComponent<Camera>();
 
         NewPlayerScale = transform.localScale;
@@ -70,6 +74,7 @@ public class Player : MonoBehaviour
 		if (speedin.actualHeight < 50) {
 			zoomOut = true;
 			this.ScaleCamera ();
+			sound.PlaySingle ("win");
 		}
 
 		Debug.Log (speedin.actualHeight);
@@ -175,6 +180,7 @@ public class Player : MonoBehaviour
 				if (col.gameObject.tag == "trash") 
 				{
 					PukeSystem.Play ();
+					sound.PlaySingle ("kotzen");
 					HeadHitAnim.SetTrigger ("getHit");
 					Debug.Log("Yeah Trash!");
 					amountFoodEaten -= foodData.eatSize * foodData.eatSize * 5;
@@ -190,6 +196,8 @@ public class Player : MonoBehaviour
 					{
 						amountFoodEaten += foodData.eatSize * foodData.eatSize;
 					}
+
+					sound.PlaySingle ("essen");
 				}
 				ScaleAndEatAll (foodData);
 			}
@@ -245,7 +253,7 @@ public class Player : MonoBehaviour
 
 	public void ScaleKotz()
 	{
-		PukeSystem.transform.localScale =  new Vector3(NewCameraScale/10, NewCameraScale/10, NewCameraScale/10);
+		PukeSystem.transform.localScale =  new Vector3(NewCameraScale/5, NewCameraScale/5, NewCameraScale/5);
 	}
 
 	private void ScaleCamera()
@@ -260,7 +268,7 @@ public class Player : MonoBehaviour
 		}
 
 		if (zoomOut) {
-			NewCameraScale =  PlayerSize * camStartScale * 15;
+			NewCameraScale =  PlayerSize * camStartScale * 10;
 		}
 
 			

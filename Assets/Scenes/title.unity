@@ -1434,7 +1434,7 @@ GameObject:
   - 82: {fileID: 1186887823}
   m_Layer: 0
   m_Name: Sound
-  m_TagString: Untagged
+  m_TagString: sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2120,9 +2120,6 @@ MonoBehaviour:
   windSource: {fileID: 1186887830}
   essenSource: {fileID: 1186887829}
   kotzSource: {fileID: 1186887828}
-  helloSource: {fileID: 1186887827}
-  heliSource: {fileID: 1186887826}
-  walSource: {fileID: 1186887825}
   win1Source: {fileID: 1186887824}
   win2Source: {fileID: 1186887823}
   lowPitchRange: 0.95
@@ -2131,9 +2128,6 @@ MonoBehaviour:
   essen2: {fileID: 8300000, guid: cfdf19377610f2d43acde212ebfa9578, type: 3}
   essen3: {fileID: 8300000, guid: 20883f2ecb213d84b9175e0508f956cd, type: 3}
   kotzen: {fileID: 8300000, guid: 8196ffa3de4dfa74b9f1496132ad0be5, type: 3}
-  hello: {fileID: 8300000, guid: b47ea6f88e66c504e80bfe33afddcf60, type: 3}
-  helicopter: {fileID: 8300000, guid: 52bb03538f6cbee48bd387fc3a29f3b2, type: 3}
-  wal: {fileID: 8300000, guid: 54b6246b94a46f540b03089aeb7036b6, type: 3}
   win1: {fileID: 8300000, guid: 744925e50d1a37844a5bb334ff6e9264, type: 3}
   win2: {fileID: 8300000, guid: a5e1b54cb41bc9948b820f7342b87883, type: 3}
 --- !u!4 &1186887833

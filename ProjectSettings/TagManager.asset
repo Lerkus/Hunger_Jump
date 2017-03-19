@@ -13,6 +13,7 @@ TagManager:
   - finish
   - trash
   - heli
+  - sound
   layers:
   - Default
   - TransparentFX
