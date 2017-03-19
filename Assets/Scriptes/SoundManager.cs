@@ -14,9 +14,6 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource essenSource;                   //Drag a reference to the audio source which will play the sound effects.
     public AudioSource kotzSource;
-    public AudioSource helloSource;
-    public AudioSource heliSource;
-    public AudioSource walSource;
     public AudioSource win1Source;
     public AudioSource win2Source;
 
@@ -29,9 +26,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip essen2;
     public AudioClip essen3;
     public AudioClip kotzen;
-    public AudioClip hello;
-    public AudioClip helicopter;
-    public AudioClip wal;
     public AudioClip win1;
     public AudioClip win2;
 
@@ -59,27 +53,6 @@ public class SoundManager : MonoBehaviour
         else if (effectName.Equals("essen"))
         {
             RandomizeSfx(essen1, essen2, essen3);
-        }
-        else if (effectName.Equals("hello"))
-        {
-            helloSource.clip = hello;
-            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            helloSource.pitch = randomPitch;
-            helloSource.Play();
-        }
-        else if (effectName.Equals("helicopter"))
-        {
-            heliSource.clip = helicopter;
-            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            heliSource.pitch = randomPitch;
-            heliSource.Play();
-        }
-        else if (effectName.Equals("wal"))
-        {
-            walSource.clip = wal;
-                        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            heliSource.pitch = randomPitch;
-            heliSource.Play();
         }
         else if (effectName.Equals("win"))
         {
