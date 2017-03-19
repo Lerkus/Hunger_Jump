@@ -21,6 +21,8 @@ public class SpeedIndicator : MonoBehaviour
     private bool finishing = false;
     private bool changingGravity = false;
 
+	public float actualHeight;
+
 
     public void Start()
     {
@@ -42,7 +44,7 @@ public class SpeedIndicator : MonoBehaviour
             }
         }
 
-        float actualHeight = startHeight - (meterFallen + (Time.time - timeStampLastGravityChange) * lastGravity);
+        actualHeight = startHeight - (meterFallen + (Time.time - timeStampLastGravityChange) * lastGravity);
 
         if (actualHeight <= finishHeight)
         {

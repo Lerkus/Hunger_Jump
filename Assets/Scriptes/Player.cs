@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
+	public SpeedIndicator speedin;
 	public GameObject RotateOnCrash;
 	public Animator HeadHitAnim;
 	public ParticleSystem PukeSystem;
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
 
 	bool lockRot = false;
 	bool crash = false;
+	bool zoomOut = false;
 
 	private float lerpscaletime;
 
@@ -65,6 +67,15 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (speedin.actualHeight < 50) {
+			zoomOut = true;
+			this.ScaleCamera ();
+		}
+
+		Debug.Log (speedin.actualHeight);
+			
+
+
 		Physics2D.gravity = new Vector2(0, Mathf.Lerp(slowSpeed,normalSpeed, Mathf.Clamp01(Time.time/(timeStampStart + timeToReAccelerate))));
 
 		lerpscaletime += Time.deltaTime;
@@ -73,7 +84,7 @@ public class Player : MonoBehaviour
 
 		//Debug.Log ("Log: " + transform.localScale.ToString());
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
-		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, lerpscaletime);
+		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, lerpscaletime/2);
 
 		//Debug.Log("CameraSize: " + Camera.GetComponent<Camera>().orthographicSize + "TargetSize: " + NewCameraScale + "OriginTarget: " + OldCameraScale);
 
@@ -207,6 +218,7 @@ public class Player : MonoBehaviour
 
         if(col.gameObject.tag == "finish")
         {
+			//col.collider.gameObject.GetComponent<Rigidbody2D> ().isKinematic = false;
             impactHandler.fatImpact(PlayerSize);
             StartCoroutine(finishTimer());
         }
@@ -246,6 +258,11 @@ public class Player : MonoBehaviour
 		{
 			NewCameraScale =  PlayerSize * camStartScale;
 		}
+
+		if (zoomOut) {
+			NewCameraScale =  PlayerSize * camStartScale * 15;
+		}
+
 			
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();

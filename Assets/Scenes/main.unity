@@ -4523,6 +4523,7 @@ MonoBehaviour:
   spawner: {fileID: 409806240}
   playerPhisi: {fileID: 67928794}
   mover: {fileID: 409806241}
+  actualHeight: 1000
 --- !u!1 &411799781
 GameObject:
   m_ObjectHideFlags: 0
@@ -9499,7 +9500,7 @@ Prefab:
         type: 2}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 409806240}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aed922a8bd9faae488a3fcf071b59354, type: 2}
   m_IsPrefabParent: 0
@@ -20164,6 +20165,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
+      propertyPath: speedin
+      value: 
+      objectReference: {fileID: 409806242}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 67928794}
@@ -20176,29 +20182,18 @@ Prefab:
         type: 2}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: scoreUiToUpdate
-      value: 
-      objectReference: {fileID: 1525993883}
-    - target: {fileID: 198000012112839884, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012112839884, guid: ed3b33173f934e645953bfd432c2a3d7,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1398540418
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 409806240}
     - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
         type: 2}
       propertyPath: impactHandler
       value: 
       objectReference: {fileID: 771378429}
-    m_RemovedComponents:
-    - {fileID: 50000013991145156, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
+    - target: {fileID: 114000012820543626, guid: ed3b33173f934e645953bfd432c2a3d7,
+        type: 2}
+      propertyPath: scoreUiToUpdate
+      value: 
+      objectReference: {fileID: 1525993883}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed3b33173f934e645953bfd432c2a3d7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1883970280
@@ -21460,6 +21455,11 @@ Prefab:
       propertyPath: phisiToBeImpacted.Array.data[222]
       value: 
       objectReference: {fileID: 1283783973}
+    - target: {fileID: 50000014068448980, guid: d928abe55a032d143bb20727e2ce547d,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d928abe55a032d143bb20727e2ce547d, type: 2}
   m_IsPrefabParent: 0
