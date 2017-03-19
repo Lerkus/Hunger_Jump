@@ -307,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011488357488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06993528, y: 0.46202302, z: 0}
+  m_LocalPosition: {x: 0, y: 0.46202302, z: 0}
   m_LocalScale: {x: 0.04483353, y: 0.04350099, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -617,10 +617,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079de5f266bbe5f4084b22c3b37cead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotateOnCrash: {fileID: 0}
   HeadHitAnim: {fileID: 95000012032190202}
   PukeSystem: {fileID: 198000012112839884}
   PlayerRotationObj: {fileID: 1000013233859166}
-  RotationSpeed: 10
+  RotationSpeed: 1
   MaxRotationAngle: 40
   Camera: {fileID: 0}
   deadzone: {fileID: 0}
@@ -635,7 +636,7 @@ MonoBehaviour:
   OldCameraScale: 0
   NewPlayerScale: {x: 0, y: 0, z: 0}
   OldPlayerScale: {x: 0, y: 0, z: 0}
-  RotationRange: {x: 320, y: 20}
+  RotationRange: {x: 340, y: 20}
 --- !u!198 &198000012112839884
 ParticleSystem:
   m_ObjectHideFlags: 1
