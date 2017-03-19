@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: c2d6e01ce1d0aa34ab2fa83348807d81
+timeCreated: 1489922381
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - efxSource: {instanceID: 0}
+  - bg_musicSource: {instanceID: 0}
+  - windSource: {instanceID: 0}
+  - essen1: {fileID: 8300000, guid: 219330742700c8e4a882e262c9cb2de3, type: 3}
+  - essen2: {fileID: 8300000, guid: cfdf19377610f2d43acde212ebfa9578, type: 3}
+  - essen3: {fileID: 8300000, guid: 20883f2ecb213d84b9175e0508f956cd, type: 3}
+  - kotzen: {fileID: 8300000, guid: 8196ffa3de4dfa74b9f1496132ad0be5, type: 3}
+  - hello: {fileID: 8300000, guid: b47ea6f88e66c504e80bfe33afddcf60, type: 3}
+  - helicopter: {fileID: 8300000, guid: 52bb03538f6cbee48bd387fc3a29f3b2, type: 3}
+  - wal: {fileID: 8300000, guid: 54b6246b94a46f540b03089aeb7036b6, type: 3}
+  - win1: {fileID: 8300000, guid: 744925e50d1a37844a5bb334ff6e9264, type: 3}
+  - win2: {fileID: 8300000, guid: a5e1b54cb41bc9948b820f7342b87883, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
