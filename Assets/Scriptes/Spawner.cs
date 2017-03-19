@@ -59,8 +59,12 @@ public class Spawner : MonoBehaviour
 
                     if (playerData.PlayerSize > foodData.minimumPlayerSize && playerData.PlayerSize < foodData.maximumPlayerSize)
                     {
+						if(fallingObjectsPrefabs[randomIndex].tag != "heli" || Random.Range(0f,1f) < 0.25f)
+						{
+							Debug.Log (fallingObjectsPrefabs [randomIndex].tag);
                         spawnSucess = true;
                         spawnObject(fallingObjectsPrefabs[randomIndex]);
+						}
                     }
                 }
             }
@@ -96,5 +100,11 @@ public class Spawner : MonoBehaviour
     public void spawnFinishLine()
     {
         Instantiate(finishLinePrefab, Vector2.Lerp(spawnRangeLeftPoint, spawnRangeRightPoint, 0.5f), new Quaternion());
+    }
+
+
+    public void changeGravity()
+    {
+
     }
 }

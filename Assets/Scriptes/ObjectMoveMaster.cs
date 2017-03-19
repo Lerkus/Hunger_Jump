@@ -19,7 +19,14 @@ public class ObjectMoveMaster : MonoBehaviour
             {
                 Debug.Log("Move Client fehlt!");
             }
-
+        }
+    }
+    public void changeGravity()
+    {
+        foreach (Transform child in masterParent.transform)
+        {
+            Rigidbody2D phisi = child.GetComponent<Rigidbody2D>();
+            phisi.gravityScale = 0;
         }
     }
 }

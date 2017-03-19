@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour 
 {
+	public GameObject RotateOnCrash;
+	public Animator HeadHitAnim;
 	public ParticleSystem PukeSystem;
 	public GameObject PlayerRotationObj;
 	public float RotationSpeed = 0.1f;
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
 	public GameObject Camera;
 	public MoveDeadzone deadzone;
 	public Spawner spawner;
+    public impact impactHandler;
 
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
 		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime);
 
-		Debug.Log("CameraSize: " + Camera.GetComponent<Camera>().orthographicSize + "TargetSize: " + NewCameraScale + "OriginTarget: " + OldCameraScale);
+		//Debug.Log("CameraSize: " + Camera.GetComponent<Camera>().orthographicSize + "TargetSize: " + NewCameraScale + "OriginTarget: " + OldCameraScale);
 
 		float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -111,7 +114,7 @@ public class Player : MonoBehaviour
 
 		if (crash) 
 		{
-			transform.Rotate( new Vector3(0,0, 15));
+			//RotateOnCrash.transform.Rotate( new Vector3(0,0, 10));
 		}
 
 	}
@@ -145,14 +148,13 @@ public class Player : MonoBehaviour
 		this.Scale ();
 		this.ScaleCamera ();
 		eating.SetTrigger ("isEating");
+		ScaleKotz ();
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		StartCoroutine(FinishFirst(0.5f));
-
-
-		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash") {
+		if (col.gameObject.tag == "food" || col.gameObject.tag == "trash" || col.gameObject.tag == "heli") 
+		{
 			Food foodData = col.gameObject.GetComponent<Food> ();
 
 			if (foodData.eatSize <= PlayerSize) 
@@ -160,6 +162,8 @@ public class Player : MonoBehaviour
 				if (col.gameObject.tag == "trash") 
 				{
 					PukeSystem.Play ();
+					HeadHitAnim.SetTrigger ("getHit");
+					Debug.Log("Yeah Trash!");
 					amountFoodEaten -= foodData.eatSize * foodData.eatSize;
 				} 
 				else 
@@ -170,9 +174,11 @@ public class Player : MonoBehaviour
 			}
 			else 
 			{
+				HeadHitAnim.SetTrigger ("getHit");
 				if (col.gameObject.tag == "heli") 
 				{
 					crash = true;
+					StartCoroutine(FinishFirst(0.2f));
 					PukeSystem.Play ();
 					amountFoodEaten -= (amountFoodEaten/100) * 5;
 					if (amountFoodEaten < 0) {
@@ -191,7 +197,8 @@ public class Player : MonoBehaviour
 
         if(col.gameObject.tag == "finish")
         {
-            SceneManager.LoadScene("title");
+            impactHandler.fatImpact(PlayerSize);
+            StartCoroutine(finishTimer());
         }
 	}
 
@@ -200,7 +207,7 @@ public class Player : MonoBehaviour
         PlayerSize = Mathf.Log(amountFoodEaten,2);
         PlayerSize = Mathf.Clamp(PlayerSize,1,20);
         scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
-        Debug.Log(PlayerSize);
+       // Debug.Log(PlayerSize);
     }
 	public void Scale()
 	{
@@ -210,6 +217,11 @@ public class Player : MonoBehaviour
 		//Debug.Log ("ScalePlayer");
 	}
 
+	public void ScaleKotz()
+	{
+		PukeSystem.transform.localScale =  new Vector3(NewCameraScale/10, NewCameraScale/10, NewCameraScale/10);
+	}
+
 	private void ScaleCamera()
 	{
 		OldCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
@@ -217,4 +229,12 @@ public class Player : MonoBehaviour
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
 	}
+
+    public IEnumerator finishTimer()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("title");
+    }
+
+
 }
