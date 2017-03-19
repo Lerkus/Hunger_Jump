@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 		if (speedin.actualHeight < 50) {
 			zoomOut = true;
 			this.ScaleCamera ();
-			sound.PlaySingle ("win");
+
 		}
 
 		Debug.Log (speedin.actualHeight);
@@ -226,9 +226,11 @@ public class Player : MonoBehaviour
 
         if(col.gameObject.tag == "finish")
         {
+			sound.PlaySingle ("win");
 			//col.collider.gameObject.GetComponent<Rigidbody2D> ().isKinematic = false;
             impactHandler.fatImpact(PlayerSize);
             StartCoroutine(finishTimer());
+
         }
 	}
 

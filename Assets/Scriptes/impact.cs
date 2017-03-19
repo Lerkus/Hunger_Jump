@@ -13,8 +13,8 @@ public class impact : MonoBehaviour {
             Vector2 playerToObject = phisiToBeImpacted[i].gameObject.transform.position - Player.transform.position;
             Debug.Log(playerToObject);
             Debug.Log(playerToObject.normalized * howFat);
-            phisiToBeImpacted[i].velocity = playerToObject * howFat / 10;
-            phisiToBeImpacted[i].rotation = Random.Range(-1, 1);
+            phisiToBeImpacted[i].velocity = playerToObject * howFat / 20;
+            phisiToBeImpacted[i].rotation = Random.Range(-45, 45);
         }
     }
 }
