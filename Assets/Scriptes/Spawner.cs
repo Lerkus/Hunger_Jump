@@ -59,8 +59,12 @@ public class Spawner : MonoBehaviour
 
                     if (playerData.PlayerSize > foodData.minimumPlayerSize && playerData.PlayerSize < foodData.maximumPlayerSize)
                     {
+						if(fallingObjectsPrefabs[randomIndex].tag != "heli" || Random.Range(0f,1f) < 0.25f)
+						{
+							Debug.Log (fallingObjectsPrefabs [randomIndex].tag);
                         spawnSucess = true;
                         spawnObject(fallingObjectsPrefabs[randomIndex]);
+						}
                     }
                 }
             }
