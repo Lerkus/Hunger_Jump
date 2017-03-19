@@ -6,13 +6,13 @@ public class ButtonCredits : MonoBehaviour {
 
     public GameObject logoetc;
     public GameObject credits;
+    public GameObject anykey;
     public Camera mainCamera;
     private bool isClicked = false;
     private bool isControlsPlaying = false;
     private float width;
     private float hidingPoint;
     private float height;
-    public float creditSpeed = 0.3f;
 
     void Start()
     {
@@ -44,17 +44,20 @@ public class ButtonCredits : MonoBehaviour {
 
         if (isControlsPlaying)
         {
-            if (credits.transform.position.y <= height)
-            {
-                credits.transform.position = Vector2.Lerp(credits.transform.position, new Vector2(credits.transform.position.x, credits.transform.position.y + height), creditSpeed * Time.deltaTime);
-            }
-            else
+            if (Input.anyKeyDown)
             {
                 credits.transform.position = new Vector2(credits.transform.position.x, -(height / 3));
                 logoetc.transform.position = new Vector2(width, logoetc.transform.position.y);
+                anykey.SetActive(false);
                 isControlsPlaying = false;
                 isClicked = false;
             }
+            if(credits.transform.position.y > logoetc.transform.position.y - (logoetc.transform.position.y / 10))
+            {
+                anykey.SetActive(true);
+            }
+
+            credits.transform.position = Vector2.Lerp(credits.transform.position, new Vector2(credits.transform.position.x, logoetc.transform.position.y),  Time.deltaTime);
         }
         
     }
