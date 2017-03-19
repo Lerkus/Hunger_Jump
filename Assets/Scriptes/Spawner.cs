@@ -97,4 +97,10 @@ public class Spawner : MonoBehaviour
     {
         Instantiate(finishLinePrefab, Vector2.Lerp(spawnRangeLeftPoint, spawnRangeRightPoint, 0.5f), new Quaternion());
     }
+
+
+    public void changeGravity()
+    {
+
+    }
 }

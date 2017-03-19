@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public GameObject Camera;
 	public MoveDeadzone deadzone;
 	public Spawner spawner;
+    public impact impactHandler;
 
     public float PlayerSize = 1;
     private float amountFoodEaten = 0;
@@ -191,7 +192,8 @@ public class Player : MonoBehaviour
 
         if(col.gameObject.tag == "finish")
         {
-            SceneManager.LoadScene("title");
+            impactHandler.fatImpact(PlayerSize);
+            StartCoroutine(finishTimer());
         }
 	}
 
@@ -217,4 +219,12 @@ public class Player : MonoBehaviour
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
 	}
+
+    public IEnumerator finishTimer()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("title");
+    }
+
+
 }
