@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
 				{
 					crash = true;
 					StartCoroutine(FinishFirst(0.2f));
-					PukeSystem.Play ();
+					//PukeSystem.Play ();
 					amountFoodEaten -= (amountFoodEaten/100) * 5;
 					if (amountFoodEaten < 0) {
 						amountFoodEaten = 0;
