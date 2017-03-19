@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 	bool lockRot = false;
 	bool crash = false;
 
+	private float lerpscaletime;
+
 	// Use this for initialization
 	void Start () {
         Camera camData = Camera.GetComponent<Camera>();
@@ -64,13 +66,13 @@ public class Player : MonoBehaviour
 	{
 		Physics2D.gravity = new Vector2(0, Mathf.Lerp(slowSpeed,normalSpeed, Mathf.Clamp01(Time.time/(timeStampStart + timeToReAccelerate))));
 
+		lerpscaletime += Time.deltaTime;
 
-
-		transform.localScale = Vector3.Lerp (OldPlayerScale, NewPlayerScale, Time.deltaTime);
+		transform.localScale = Vector3.Lerp (OldPlayerScale, NewPlayerScale, lerpscaletime);
 
 		//Debug.Log ("Log: " + transform.localScale.ToString());
 		//Debug.Log ("Old" + OldPlayerScale + "New: " + NewPlayerScale);
-		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, Time.deltaTime);
+		Camera.GetComponent<Camera> ().orthographicSize = Mathf.Lerp(OldCameraScale, NewCameraScale, lerpscaletime);
 
 		//Debug.Log("CameraSize: " + Camera.GetComponent<Camera>().orthographicSize + "TargetSize: " + NewCameraScale + "OriginTarget: " + OldCameraScale);
 
@@ -163,11 +165,19 @@ public class Player : MonoBehaviour
 					PukeSystem.Play ();
 					HeadHitAnim.SetTrigger ("getHit");
 					Debug.Log("Yeah Trash!");
-					amountFoodEaten -= foodData.eatSize * foodData.eatSize;
+					amountFoodEaten -= foodData.eatSize * foodData.eatSize * 5;
+					if (amountFoodEaten < 0) {
+						amountFoodEaten = 0;
+					}
 				} 
 				else 
 				{
-					amountFoodEaten += foodData.eatSize * foodData.eatSize;
+					if (col.gameObject.tag == "heli") {
+						amountFoodEaten += foodData.eatSize * foodData.eatSize * 2;
+					} else 
+					{
+						amountFoodEaten += foodData.eatSize * foodData.eatSize;
+					}
 				}
 				ScaleAndEatAll (foodData);
 			}
@@ -178,7 +188,7 @@ public class Player : MonoBehaviour
 				{
 					crash = true;
 					StartCoroutine(FinishFirst(0.2f));
-					//PukeSystem.Play ();
+					//sPukeSystem.Play ();
 					amountFoodEaten -= (amountFoodEaten/100) * 5;
 					if (amountFoodEaten < 0) {
 						amountFoodEaten = 0;
@@ -204,15 +214,19 @@ public class Player : MonoBehaviour
     {
         PlayerSize = Mathf.Log(amountFoodEaten,2);
         PlayerSize = Mathf.Clamp(PlayerSize,1,20);
-        scoreUiToUpdate.text = (int)((PlayerSize - 1) * 100) + "";
+		scoreUiToUpdate.text = (PlayerSize) * 100 - (PlayerSize * 100)%1 + "";
+
        // Debug.Log(PlayerSize);
     }
 	public void Scale()
 	{
 		OldPlayerScale = transform.localScale;
 
-		NewPlayerScale = playerStartScale * PlayerSize * 3;
+		NewPlayerScale = playerStartScale * PlayerSize;
+		Debug.Log ("NewScale :" +NewPlayerScale);
 		//Debug.Log ("ScalePlayer");
+
+		lerpscaletime = 0;
 	}
 
 	public void ScaleKotz()
@@ -223,7 +237,14 @@ public class Player : MonoBehaviour
 	private void ScaleCamera()
 	{
 		OldCameraScale = Camera.GetComponent<Camera> ().orthographicSize;
-		NewCameraScale =  PlayerSize * camStartScale;
+		if (PlayerSize > 2) {
+			NewCameraScale = PlayerSize * camStartScale / 2;
+		} 
+		else 
+		{
+			NewCameraScale =  PlayerSize * camStartScale;
+		}
+			
 		spawner.RecalculateSpawnPosition ();
 		deadzone.RecalculatePosition ();
 	}

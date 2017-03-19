@@ -621,7 +621,7 @@ MonoBehaviour:
   HeadHitAnim: {fileID: 95000012032190202}
   PukeSystem: {fileID: 198000012112839884}
   PlayerRotationObj: {fileID: 1000013233859166}
-  RotationSpeed: 1
+  RotationSpeed: 5
   MaxRotationAngle: 40
   Camera: {fileID: 0}
   deadzone: {fileID: 0}
