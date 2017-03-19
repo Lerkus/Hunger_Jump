@@ -9,12 +9,22 @@ public class SoundManager : MonoBehaviour
 
 
 
-    public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
     public AudioSource bg_musicSource;                 //Drag a reference to the audio source which will play the music.
-    public AudioSource windSource;                  
+    public AudioSource windSource;
+
+    public AudioSource essenSource;                   //Drag a reference to the audio source which will play the sound effects.
+    public AudioSource kotzSource;
+    public AudioSource helloSource;
+    public AudioSource heliSource;
+    public AudioSource walSource;
+    public AudioSource win1Source;
+    public AudioSource win2Source;
+
+
     public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
     public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
+
     public AudioClip essen1;
     public AudioClip essen2;
     public AudioClip essen3;
@@ -41,10 +51,10 @@ public class SoundManager : MonoBehaviour
     {
         if (effectName.Equals("kotzen"))
         {
-            efxSource.clip = kotzen;
+            kotzSource.clip = kotzen;
             float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            efxSource.pitch = randomPitch;
-            efxSource.Play();
+            kotzSource.pitch = randomPitch;
+            kotzSource.Play();
         }
         else if (effectName.Equals("essen"))
         {
@@ -52,31 +62,31 @@ public class SoundManager : MonoBehaviour
         }
         else if (effectName.Equals("hello"))
         {
-            efxSource.clip = hello;
+            helloSource.clip = hello;
             float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            efxSource.pitch = randomPitch;
-            efxSource.Play();
+            helloSource.pitch = randomPitch;
+            helloSource.Play();
         }
         else if (effectName.Equals("helicopter"))
         {
-            efxSource.clip = helicopter;
+            heliSource.clip = helicopter;
             float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            efxSource.pitch = randomPitch;
-            efxSource.Play();
+            heliSource.pitch = randomPitch;
+            heliSource.Play();
         }
         else if (effectName.Equals("wal"))
         {
-            efxSource.clip = wal;
+            walSource.clip = wal;
                         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-            efxSource.pitch = randomPitch;
-            efxSource.Play();
+            heliSource.pitch = randomPitch;
+            heliSource.Play();
         }
         else if (effectName.Equals("win"))
         {
-            efxSource.clip = win1;
-            efxSource.Play();
-            efxSource.clip = win2;
-            efxSource.Play();
+            win1Source.clip = win1;
+            win1Source.Play();
+            win2Source.clip = win2;
+            win2Source.Play();
         }
         
     }
@@ -89,10 +99,10 @@ public class SoundManager : MonoBehaviour
 
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
-        efxSource.pitch = randomPitch;
+        essenSource.pitch = randomPitch;
 
-        efxSource.clip = clips[randomIndex];
+        essenSource.clip = clips[randomIndex];
 
-        efxSource.Play();
+        essenSource.Play();
     }
 }

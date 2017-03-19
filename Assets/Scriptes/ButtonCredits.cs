@@ -41,17 +41,6 @@ public class ButtonCredits : MonoBehaviour {
                 isControlsPlaying = true;
             }
         }
-        else
-        {
-
-            /*
-            if (logoetc.transform.position.x < width)
-            {
-                logoetc.transform.position = Vector2.Lerp(logoetc.transform.position, new Vector2(width * 4, logoetc.transform.position.y), 2.5f * Time.deltaTime);
-            }
-            */
-            
-        }
 
         if (isControlsPlaying)
         {
