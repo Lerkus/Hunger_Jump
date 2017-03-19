@@ -14,7 +14,7 @@ public class SpeedIndicator : MonoBehaviour
     public ObjectMoveMaster mover;
     private Text textToUpdate;
 
-    private int meterFallen = 0;
+    private float meterFallen = 0;
     private float timeStampLastGravityChange;
     private float lastGravity;
 
@@ -36,15 +36,15 @@ public class SpeedIndicator : MonoBehaviour
 
             if (lastGravity != Physics2D.gravity.y)
             {
-                meterFallen += (int)((Time.time - timeStampLastGravityChange) * lastGravity);
+                meterFallen += ((Time.time - timeStampLastGravityChange) * lastGravity);
                 lastGravity = Physics2D.gravity.y;
                 timeStampLastGravityChange = Time.time;
             }
         }
 
-        float actualMeterFallen = startHeight - (meterFallen + (Time.time - timeStampLastGravityChange) * lastGravity);
+        float actualHeight = startHeight - (meterFallen + (Time.time - timeStampLastGravityChange) * lastGravity);
 
-        if (actualMeterFallen <= finishHeight)
+        if (actualHeight <= finishHeight)
         {
             if (!finishing)
             {
@@ -52,7 +52,7 @@ public class SpeedIndicator : MonoBehaviour
                 spawner.shouldSpawnObjects = false;
             }
 
-            if (actualMeterFallen <= finishHeight / 2)
+            if (actualHeight <= finishHeight / 2)
             {
                 if (!changingGravity)
                 {
@@ -67,9 +67,10 @@ public class SpeedIndicator : MonoBehaviour
                 }
             }
         }
-        else
+        if (actualHeight < 0)
         {
-            textToUpdate.text = (int)actualMeterFallen + "m";
+            actualHeight = 0;
         }
+        textToUpdate.text = actualHeight - actualHeight%1 + "m";
     }
 }
