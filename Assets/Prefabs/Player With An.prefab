@@ -247,7 +247,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011671837646}
   - 212: {fileID: 212000012738508320}
-  - 50: {fileID: 50000013991145156}
   - 114: {fileID: 114000012820543626}
   - 58: {fileID: 58000013853135814}
   m_Layer: 0
@@ -307,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011488357488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06993528, y: 0.46202302, z: 0}
+  m_LocalPosition: {x: 0, y: 0.46202302, z: 0}
   m_LocalScale: {x: 0.04483353, y: 0.04350099, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -319,8 +318,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013233859166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 10}
   m_LocalScale: {x: 0.100840434, y: 0.10392941, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -496,23 +495,6 @@ Transform:
   - {fileID: 4000010876122060}
   m_Father: {fileID: 4000013049384362}
   m_RootOrder: 0
---- !u!50 &50000013991145156
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013233859166}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &58000013853135814
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -617,14 +599,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079de5f266bbe5f4084b22c3b37cead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedin: {fileID: 0}
+  RotateOnCrash: {fileID: 0}
   HeadHitAnim: {fileID: 95000012032190202}
   PukeSystem: {fileID: 198000012112839884}
   PlayerRotationObj: {fileID: 1000013233859166}
-  RotationSpeed: 10
+  RotationSpeed: 5
   MaxRotationAngle: 40
   Camera: {fileID: 0}
   deadzone: {fileID: 0}
   spawner: {fileID: 0}
+  impactHandler: {fileID: 0}
   PlayerSize: 1
   scoreUiToUpdate: {fileID: 0}
   slowSpeed: 4
@@ -635,7 +620,7 @@ MonoBehaviour:
   OldCameraScale: 0
   NewPlayerScale: {x: 0, y: 0, z: 0}
   OldPlayerScale: {x: 0, y: 0, z: 0}
-  RotationRange: {x: 320, y: 20}
+  RotationRange: {x: 340, y: 20}
 --- !u!198 &198000012112839884
 ParticleSystem:
   m_ObjectHideFlags: 1
